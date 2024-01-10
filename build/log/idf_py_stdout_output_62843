@@ -1,0 +1,1806 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3818,len:0x16e0
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xc00
+load:0x403cc700,len:0x2eb0
+entry 0x403c9908
+[0;32mI (27) boot: ESP-IDF 5.1.1 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Dec 23 2023 20:28:24[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.1[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (72) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (79) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (87) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=3c090020 size=24884h (149636) map[0m
+[0;32mI (126) esp_image: segment 1: paddr=000348ac vaddr=3fc97100 size=04428h ( 17448) load[0m
+[0;32mI (130) esp_image: segment 2: paddr=00038cdc vaddr=40374000 size=0733ch ( 29500) load[0m
+[0;32mI (139) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=8e03ch (581692) map[0m
+[0;32mI (245) esp_image: segment 4: paddr=000ce064 vaddr=4037b33c size=0bd88h ( 48520) load[0m
+[0;32mI (264) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (264) boot: Disabling RNG early entropy source...[0m
+[0;32mI (275) cpu_start: Multicore app[0m
+[0;32mI (276) cpu_start: Pro cpu up.[0m
+[0;32mI (276) cpu_start: Starting app cpu, entry point is 0x40375418[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (294) cpu_start: Pro cpu start user code[0m
+[0;32mI (294) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (294) cpu_start: Application information:[0m
+[0;32mI (297) cpu_start: Project name:     CroqConnect[0m
+[0;32mI (302) cpu_start: App version:      1[0m
+[0;32mI (307) cpu_start: Compile time:     Dec 23 2023 20:28:03[0m
+[0;32mI (313) cpu_start: ELF file SHA256:  f5885a8898e1b6c1...[0m
+[0;32mI (319) cpu_start: ESP-IDF:          5.1.1[0m
+[0;32mI (324) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (328) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (333) cpu_start: Chip rev:         v0.1[0m
+[0;32mI (338) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (345) heap_init: At 3FC9F268 len 0004A4A8 (297 KiB): DRAM[0m
+[0;32mI (351) heap_init: At 3FCE9710 len 00005724 (21 KiB): STACK/DRAM[0m
+[0;32mI (358) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (364) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (371) spi_flash: detected chip: gd[0m
+[0;32mI (375) spi_flash: flash io: dio[0m
+[0;32mI (379) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (386) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (393) app_start: Starting scheduler on CPU0[0m
+[0;32mI (398) app_start: Starting scheduler on CPU1[0m
+[0;32mI (398) main_task: Started on CPU0[0m
+[0;32mI (408) main_task: Calling app_main()[0m
+[0;32mI (418) WIFI_CREDENTIALS: Wi-Fi credentials saved successfully.[0m
+[0;31mE (428) WIFI_CREDENTIALS: Error checking if Wi-Fi credentials are present. Error 4354[0m
+[0;31mE (428) WIFI_CREDENTIALS: Error checking if Wi-Fi credentials are present. Error 4354[0m
+[0;32mI (438) WIFI_CREDENTIALS: No Wi-Fi credentials found in NVS.[0m
+[0;32mI (438) WIFI: No WiFi credentials found. Starting in AP mode.[0m
+[0;31mE (448) HTTP_CLIENT: No transport found[0m
+[0;31mE (448) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;32mI (458) main_task: Returned from app_main()[0m
+[0;31mE (1458) HTTP_CLIENT: No transport found[0m
+[0;31mE (1458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (4458) HTTP_CLIENT: No transport found[0m
+[0;31mE (4458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (5458) HTTP_CLIENT: No transport found[0m
+[0;31mE (5458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (6458) HTTP_CLIENT: No transport found[0m
+[0;31mE (6458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (7458) HTTP_CLIENT: No transport found[0m
+[0;31mE (7458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (8458) HTTP_CLIENT: No transport found[0m
+[0;31mE (8458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (9458) HTTP_CLIENT: No transport found[0m
+[0;31mE (9458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (10458) HTTP_CLIENT: No transport found[0m
+[0;31mE (10458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (11458) HTTP_CLIENT: No transport found[0m
+[0;31mE (11458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (12458) HTTP_CLIENT: No transport found[0m
+[0;31mE (12458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (13458) HTTP_CLIENT: No transport found[0m
+[0;31mE (13458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (14458) HTTP_CLIENT: No transport found[0m
+[0;31mE (14458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (15458) HTTP_CLIENT: No transport found[0m
+[0;31mE (15458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (16458) HTTP_CLIENT: No transport found[0m
+[0;31mE (16458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (17458) HTTP_CLIENT: No transport found[0m
+[0;31mE (17458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (18458) HTTP_CLIENT: No transport found[0m
+[0;31mE (18458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (19458) HTTP_CLIENT: No transport found[0m
+[0;31mE (19458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (20458) HTTP_CLIENT: No transport found[0m
+[0;31mE (20458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (21458) HTTP_CLIENT: No transport found[0m
+[0;31mE (21458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (22458) HTTP_CLIENT: No transport found[0m
+[0;31mE (22458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (23458) HTTP_CLIENT: No transport found[0m
+[0;31mE (23458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (24458) HTTP_CLIENT: No transport found[0m
+[0;31mE (24458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (25458) HTTP_CLIENT: No transport found[0m
+[0;31mE (25458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (26458) HTTP_CLIENT: No transport found[0m
+[0;31mE (26458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (27458) HTTP_CLIENT: No transport found[0m
+[0;31mE (27458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (28458) HTTP_CLIENT: No transport found[0m
+[0;31mE (28458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (29458) HTTP_CLIENT: No transport found[0m
+[0;31mE (29458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (30458) HTTP_CLIENT: No transport found[0m
+[0;31mE (30458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (31458) HTTP_CLIENT: No transport found[0m
+[0;31mE (31458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (32458) HTTP_CLIENT: No transport found[0m
+[0;31mE (32458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (33458) HTTP_CLIENT: No transport found[0m
+[0;31mE (33458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (34458) HTTP_CLIENT: No transport found[0m
+[0;31mE (34458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (35458) HTTP_CLIENT: No transport found[0m
+[0;31mE (35458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (36458) HTTP_CLIENT: No transport found[0m
+[0;31mE (36458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (37458) HTTP_CLIENT: No transport found[0m
+[0;31mE (37458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (38458) HTTP_CLIENT: No transport found[0m
+[0;31mE (38458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (39458) HTTP_CLIENT: No transport found[0m
+[0;31mE (39458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (40458) HTTP_CLIENT: No transport found[0m
+[0;31mE (40458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (41458) HTTP_CLIENT: No transport found[0m
+[0;31mE (41458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (42458) HTTP_CLIENT: No transport found[0m
+[0;31mE (42458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (43458) HTTP_CLIENT: No transport found[0m
+[0;31mE (43458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (44458) HTTP_CLIENT: No transport found[0m
+[0;31mE (44458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (45458) HTTP_CLIENT: No transport found[0m
+[0;31mE (45458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (46458) HTTP_CLIENT: No transport found[0m
+[0;31mE (46458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (47458) HTTP_CLIENT: No transport found[0m
+[0;31mE (47458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (48458) HTTP_CLIENT: No transport found[0m
+[0;31mE (48458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (49458) HTTP_CLIENT: No transport found[0m
+[0;31mE (49458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (50458) HTTP_CLIENT: No transport found[0m
+[0;31mE (50458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (51458) HTTP_CLIENT: No transport found[0m
+[0;31mE (51458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (52458) HTTP_CLIENT: No transport found[0m
+[0;31mE (52458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (53458) HTTP_CLIENT: No transport found[0m
+[0;31mE (53458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (54458) HTTP_CLIENT: No transport found[0m
+[0;31mE (54458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (55458) HTTP_CLIENT: No transport found[0m
+[0;31mE (55458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (56458) HTTP_CLIENT: No transport found[0m
+[0;31mE (56458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (57458) HTTP_CLIENT: No transport found[0m
+[0;31mE (57458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (58458) HTTP_CLIENT: No transport found[0m
+[0;31mE (58458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (59458) HTTP_CLIENT: No transport found[0m
+[0;31mE (59458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (60458) HTTP_CLIENT: No transport found[0m
+[0;31mE (60458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (61458) HTTP_CLIENT: No transport found[0m
+[0;31mE (61458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (62458) HTTP_CLIENT: No transport found[0m
+[0;31mE (62458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (63458) HTTP_CLIENT: No transport found[0m
+[0;31mE (63458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (64458) HTTP_CLIENT: No transport found[0m
+[0;31mE (64458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (65458) HTTP_CLIENT: No transport found[0m
+[0;31mE (65458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (66458) HTTP_CLIENT: No transport found[0m
+[0;31mE (66458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (67458) HTTP_CLIENT: No transport found[0m
+[0;31mE (67458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (68458) HTTP_CLIENT: No transport found[0m
+[0;31mE (68458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (69458) HTTP_CLIENT: No transport found[0m
+[0;31mE (69458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (70458) HTTP_CLIENT: No transport found[0m
+[0;31mE (70458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (71458) HTTP_CLIENT: No transport found[0m
+[0;31mE (71458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (72458) HTTP_CLIENT: No transport found[0m
+[0;31mE (72458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (73458) HTTP_CLIENT: No transport found[0m
+[0;31mE (73458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (74458) HTTP_CLIENT: No transport found[0m
+[0;31mE (74458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (75458) HTTP_CLIENT: No transport found[0m
+[0;31mE (75458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (76458) HTTP_CLIENT: No transport found[0m
+[0;31mE (76458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (77458) HTTP_CLIENT: No transport found[0m
+[0;31mE (77458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (78458) HTTP_CLIENT: No transport found[0m
+[0;31mE (78458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (79458) HTTP_CLIENT: No transport found[0m
+[0;31mE (79458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (80458) HTTP_CLIENT: No transport found[0m
+[0;31mE (80458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (81458) HTTP_CLIENT: No transport found[0m
+[0;31mE (81458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (82458) HTTP_CLIENT: No transport found[0m
+[0;31mE (82458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (83458) HTTP_CLIENT: No transport found[0m
+[0;31mE (83458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (84458) HTTP_CLIENT: No transport found[0m
+[0;31mE (84458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (85458) HTTP_CLIENT: No transport found[0m
+[0;31mE (85458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (86458) HTTP_CLIENT: No transport found[0m
+[0;31mE (86458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (87458) HTTP_CLIENT: No transport found[0m
+[0;31mE (87458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (88458) HTTP_CLIENT: No transport found[0m
+[0;31mE (88458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (89458) HTTP_CLIENT: No transport found[0m
+[0;31mE (89458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (90458) HTTP_CLIENT: No transport found[0m
+[0;31mE (90458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (91458) HTTP_CLIENT: No transport found[0m
+[0;31mE (91458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (92458) HTTP_CLIENT: No transport found[0m
+[0;31mE (92458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (93458) HTTP_CLIENT: No transport found[0m
+[0;31mE (93458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (94458) HTTP_CLIENT: No transport found[0m
+[0;31mE (94458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (95458) HTTP_CLIENT: No transport found[0m
+[0;31mE (95458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (96458) HTTP_CLIENT: No transport found[0m
+[0;31mE (96458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (97458) HTTP_CLIENT: No transport found[0m
+[0;31mE (97458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (98458) HTTP_CLIENT: No transport found[0m
+[0;31mE (98458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (99458) HTTP_CLIENT: No transport found[0m
+[0;31mE (99458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (100458) HTTP_CLIENT: No transport found[0m
+[0;31mE (100458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (101458) HTTP_CLIENT: No transport found[0m
+[0;31mE (101458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (102458) HTTP_CLIENT: No transport found[0m
+[0;31mE (102458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (103458) HTTP_CLIENT: No transport found[0m
+[0;31mE (103458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (104458) HTTP_CLIENT: No transport found[0m
+[0;31mE (104458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (105458) HTTP_CLIENT: No transport found[0m
+[0;31mE (105458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (106458) HTTP_CLIENT: No transport found[0m
+[0;31mE (106458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (107458) HTTP_CLIENT: No transport found[0m
+[0;31mE (107458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (108458) HTTP_CLIENT: No transport found[0m
+[0;31mE (108458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (109458) HTTP_CLIENT: No transport found[0m
+[0;31mE (109458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (110458) HTTP_CLIENT: No transport found[0m
+[0;31mE (110458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (111458) HTTP_CLIENT: No transport found[0m
+[0;31mE (111458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (112458) HTTP_CLIENT: No transport found[0m
+[0;31mE (112458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (113458) HTTP_CLIENT: No transport found[0m
+[0;31mE (113458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (114458) HTTP_CLIENT: No transport found[0m
+[0;31mE (114458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (115458) HTTP_CLIENT: No transport found[0m
+[0;31mE (115458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (116458) HTTP_CLIENT: No transport found[0m
+[0;31mE (116458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (117458) HTTP_CLIENT: No transport found[0m
+[0;31mE (117458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (118458) HTTP_CLIENT: No transport found[0m
+[0;31mE (118458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (119458) HTTP_CLIENT: No transport found[0m
+[0;31mE (119458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (120458) HTTP_CLIENT: No transport found[0m
+[0;31mE (120458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (121458) HTTP_CLIENT: No transport found[0m
+[0;31mE (121458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (122458) HTTP_CLIENT: No transport found[0m
+[0;31mE (122458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (123458) HTTP_CLIENT: No transport found[0m
+[0;31mE (123458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (124458) HTTP_CLIENT: No transport found[0m
+[0;31mE (124458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (125458) HTTP_CLIENT: No transport found[0m
+[0;31mE (125458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (126458) HTTP_CLIENT: No transport found[0m
+[0;31mE (126458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (127458) HTTP_CLIENT: No transport found[0m
+[0;31mE (127458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (128458) HTTP_CLIENT: No transport found[0m
+[0;31mE (128458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (129458) HTTP_CLIENT: No transport found[0m
+[0;31mE (129458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (130458) HTTP_CLIENT: No transport found[0m
+[0;31mE (130458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (131458) HTTP_CLIENT: No transport found[0m
+[0;31mE (131458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (132458) HTTP_CLIENT: No transport found[0m
+[0;31mE (132458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (133458) HTTP_CLIENT: No transport found[0m
+[0;31mE (133458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (134458) HTTP_CLIENT: No transport found[0m
+[0;31mE (134458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (135458) HTTP_CLIENT: No transport found[0m
+[0;31mE (135458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (136458) HTTP_CLIENT: No transport found[0m
+[0;31mE (136458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (137458) HTTP_CLIENT: No transport found[0m
+[0;31mE (137458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (138458) HTTP_CLIENT: No transport found[0m
+[0;31mE (138458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (139458) HTTP_CLIENT: No transport found[0m
+[0;31mE (139458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (140458) HTTP_CLIENT: No transport found[0m
+[0;31mE (140458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (141458) HTTP_CLIENT: No transport found[0m
+[0;31mE (141458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (142458) HTTP_CLIENT: No transport found[0m
+[0;31mE (142458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (143458) HTTP_CLIENT: No transport found[0m
+[0;31mE (143458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (144458) HTTP_CLIENT: No transport found[0m
+[0;31mE (144458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (145458) HTTP_CLIENT: No transport found[0m
+[0;31mE (145458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (146458) HTTP_CLIENT: No transport found[0m
+[0;31mE (146458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (147458) HTTP_CLIENT: No transport found[0m
+[0;31mE (147458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (148458) HTTP_CLIENT: No transport found[0m
+[0;31mE (148458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (149458) HTTP_CLIENT: No transport found[0m
+[0;31mE (149458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (150458) HTTP_CLIENT: No transport found[0m
+[0;31mE (150458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (151458) HTTP_CLIENT: No transport found[0m
+[0;31mE (151458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (152458) HTTP_CLIENT: No transport found[0m
+[0;31mE (152458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (153458) HTTP_CLIENT: No transport found[0m
+[0;31mE (153458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (154458) HTTP_CLIENT: No transport found[0m
+[0;31mE (154458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (155458) HTTP_CLIENT: No transport found[0m
+[0;31mE (155458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (156458) HTTP_CLIENT: No transport found[0m
+[0;31mE (156458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (157458) HTTP_CLIENT: No transport found[0m
+[0;31mE (157458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (158458) HTTP_CLIENT: No transport found[0m
+[0;31mE (158458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (159458) HTTP_CLIENT: No transport found[0m
+[0;31mE (159458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (160458) HTTP_CLIENT: No transport found[0m
+[0;31mE (160458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (161458) HTTP_CLIENT: No transport found[0m
+[0;31mE (161458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (162458) HTTP_CLIENT: No transport found[0m
+[0;31mE (162458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (163458) HTTP_CLIENT: No transport found[0m
+[0;31mE (163458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (164458) HTTP_CLIENT: No transport found[0m
+[0;31mE (164458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (165458) HTTP_CLIENT: No transport found[0m
+[0;31mE (165458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (166458) HTTP_CLIENT: No transport found[0m
+[0;31mE (166458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (167458) HTTP_CLIENT: No transport found[0m
+[0;31mE (167458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (168458) HTTP_CLIENT: No transport found[0m
+[0;31mE (168458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (169458) HTTP_CLIENT: No transport found[0m
+[0;31mE (169458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (170458) HTTP_CLIENT: No transport found[0m
+[0;31mE (170458) webclient: La requête a échoué, code d'erreur = 28677[0m
+�+�	Y���R�r�I�%�8���[�WH�C!�A;�Lց��&��MJ {Y,ѵY������!��K����t"�a �YI�K�����%�	��� �R�r�I�%�8��[�WH��A;�Lց�В��JB!�+�9Q������p�� �K���A]C!�A;�Lց�В�58�ڲ,�i����� �YI�K�����+�	��� �R��Y��%��Ӻ�[ʇa��3�W�I��58�B!�+��N���ɱ��K� �K�������3�-�I��5�Jڳ,ѵY������!��K�����+�	Y���R�r�I�%�8���[�WHش��3�W��+�	Y���R�r�I�%�8���[�WH�[0;31mE (2383458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2383458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2384458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2384458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2385458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2385458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2386458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2386458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2387458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2387458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2388458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2388458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2389458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2389458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2390458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2390458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2391458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2391458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2392458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2392458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2393458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2393458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2394458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2394458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2395458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2395458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2396458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2396458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2397458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2397458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2398458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2398458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2399458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2399458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2400458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2400458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2401458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2401458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2402458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2402458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2403458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2403458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2404458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2404458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2405458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2405458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2406458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2406458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2407458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2407458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2408458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2408458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2409458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2409458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2410458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2410458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2411458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2411458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2412458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2412458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2413458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2413458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2414458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2414458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2415458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2415458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2416458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2416458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2417458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2417458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2418458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2418458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2419458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2419458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2420458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2420458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2421458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2421458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2422458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2422458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2423458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2423458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2424458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2424458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2425458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2425458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2426458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2426458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2427458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2427458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2428458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2428458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2429458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2429458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2430458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2430458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2431458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2431458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2432458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2432458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2433458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2433458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2434458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2434458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2435458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2435458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2436458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2436458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2437458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2437458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2438458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2438458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2439458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2439458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2440458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2440458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2441458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2441458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2442458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2442458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2443458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2443458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2444458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2444458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2445458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2445458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2446458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2446458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2447458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2447458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2448458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2448458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2449458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2449458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2450458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2450458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2451458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2451458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2452458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2452458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2453458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2453458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2454458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2454458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2455458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2455458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2456458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2456458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2457458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2457458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2458458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2458458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2459458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2459458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2460458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2460458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2461458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2461458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2462458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2462458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2463458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2463458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2464458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2464458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2465458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2465458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2466458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2466458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2467458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2467458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2468458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2468458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2469458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2469458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2470458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2470458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2471458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2471458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2472458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2472458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2473458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2473458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2474458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2474458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2475458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2475458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2476458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2476458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2477458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2477458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2478458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2478458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2479458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2479458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2480458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2480458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2481458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2481458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2482458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2482458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2483458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2483458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2484458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2484458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2485458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2485458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2486458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2486458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2487458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2487458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2488458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2488458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2489458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2489458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2490458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2490458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2491458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2491458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2492458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2492458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2493458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2493458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2494458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2494458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2495458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2495458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2496458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2496458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2497458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2497458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2498458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2498458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2499458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2499458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2500458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2500458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2501458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2501458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2502458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2502458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2503458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2503458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2504458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2504458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2505458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2505458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2506458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2506458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2507458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2507458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2508458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2508458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2509458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2509458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2510458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2510458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2511458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2511458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2512458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2512458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2513458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2513458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2514458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2514458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2515458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2515458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2516458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2516458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2517458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2517458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2518458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2518458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2519458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2519458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2520458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2520458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2521458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2521458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2522458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2522458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2523458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2523458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2524458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2524458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2525458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2525458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2526458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2526458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2527458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2527458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2528458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2528458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2529458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2529458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2530458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2530458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2531458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2531458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2532458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2532458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2533458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2533458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2534458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2534458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2535458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2535458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2536458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2536458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2537458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2537458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2538458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2538458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2539458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2539458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2540458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2540458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2541458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2541458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2542458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2542458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2543458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2543458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2544458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2544458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2545458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2545458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2546458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2546458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2547458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2547458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2548458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2548458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2549458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2549458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2550458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2550458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2551458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2551458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2552458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2552458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2553458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2553458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2554458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2554458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2555458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2555458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2556458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2556458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2557458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2557458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2558458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2558458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2559458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2559458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2560458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2560458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2561458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2561458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2562458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2562458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2563458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2563458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2564458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2564458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2565458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2565458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2566458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2566458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2567458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2567458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2568458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2568458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2569458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2569458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2570458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2570458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2571458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2571458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2572458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2572458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2573458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2573458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2574458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2574458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2575458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2575458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2576458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2576458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2577458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2577458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2578458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2578458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2579458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2579458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2580458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2580458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2581458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2581458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2582458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2582458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2583458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2583458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2584458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2584458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2585458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2585458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2586458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2586458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2587458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2587458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2588458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2588458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2589458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2589458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2590458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2590458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2591458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2591458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2592458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2592458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2593458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2593458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2594458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2594458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2595458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2595458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2596458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2596458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2597458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2597458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2598458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2598458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2599458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2599458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2600458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2600458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2601458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2601458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2602458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2602458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2603458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2603458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2604458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2604458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2605458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2605458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2606458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2606458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2607458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2607458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2608458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2608458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2609458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2609458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2610458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2610458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2611458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2611458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2612458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2612458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2613458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2613458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2614458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2614458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2615458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2615458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2616458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2616458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2617458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2617458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2618458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2618458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2619458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2619458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2620458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2620458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2621458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2621458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2622458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2622458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2623458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2623458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2624458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2624458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2625458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2625458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2626458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2626458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2627458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2627458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2628458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2628458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2629458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2629458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2630458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2630458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2631458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2631458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2632458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2632458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2633458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2633458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2634458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2634458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2635458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2635458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2636458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2636458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2637458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2637458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2638458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2638458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2639458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2639458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2640458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2640458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2641458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2641458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2642458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2642458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2643458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2643458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2644458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2644458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2645458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2645458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2646458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2646458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2647458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2647458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2648458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2648458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2649458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2649458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2650458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2650458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2651458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2651458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2652458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2652458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2653458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2653458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2654458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2654458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2655458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2655458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2656458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2656458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2657458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2657458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2658458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2658458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2659458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2659458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2660458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2660458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2661458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2661458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2662458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2662458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2663458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2663458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2664458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2664458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2665458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2665458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2666458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2666458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2667458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2667458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2668458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2668458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2669458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2669458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2670458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2670458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2671458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2671458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2672458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2672458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2673458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2673458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2674458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2674458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2675458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2675458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2676458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2676458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2677458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2677458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2678458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2678458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2679458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2679458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2680458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2680458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2681458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2681458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2682458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2682458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2683458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2683458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2684458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2684458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2685458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2685458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2686458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2686458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2687458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2687458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2688458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2688458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2689458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2689458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2690458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2690458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2691458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2691458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2692458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2692458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2693458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2693458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2694458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2694458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2695458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2695458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2696458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2696458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2697458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2697458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2698458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2698458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2699458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2699458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2700458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2700458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2701458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2701458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2702458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2702458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2703458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2703458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2704458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2704458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2705458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2705458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2706458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2706458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2707458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2707458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2708458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2708458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2709458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2709458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2710458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2710458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2711458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2711458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2712458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2712458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2713458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2713458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2714458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2714458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2715458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2715458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2716458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2716458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2717458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2717458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2718458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2718458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2719458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2719458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2720458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2720458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2721458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2721458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2722458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2722458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2723458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2723458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2724458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2724458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2725458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2725458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2726458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2726458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2727458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2727458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2728458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2728458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2729458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2729458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2730458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2730458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2731458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2731458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2732458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2732458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2733458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2733458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2734458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2734458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2735458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2735458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2736458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2736458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2737458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2737458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2738458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2738458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2739458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2739458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2740458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2740458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2741458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2741458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2742458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2742458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2743458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2743458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2744458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2744458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2745458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2745458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2746458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2746458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2747458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2747458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2748458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2748458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2749458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2749458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2750458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2750458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2751458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2751458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2752458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2752458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2753458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2753458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2754458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2754458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2755458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2755458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2756458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2756458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2757458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2757458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2758458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2758458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2759458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2759458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2760458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2760458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2761458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2761458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2762458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2762458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2763458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2763458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2764458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2764458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2765458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2765458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2766458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2766458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2767458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2767458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2768458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2768458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2769458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2769458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2770458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2770458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2771458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2771458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2772458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2772458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2773458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2773458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2774458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2774458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2775458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2775458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2776458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2776458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2777458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2777458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2778458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2778458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2779458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2779458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2780458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2780458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2781458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2781458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2782458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2782458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2783458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2783458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2784458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2784458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2785458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2785458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2786458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2786458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2787458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2787458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2788458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2788458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2789458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2789458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2790458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2790458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2791458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2791458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2792458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2792458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2793458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2793458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2794458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2794458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2795458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2795458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2796458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2796458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2797458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2797458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2798458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2798458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2799458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2799458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2800458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2800458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2801458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2801458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2802458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2802458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2803458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2803458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2804458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2804458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2805458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2805458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2806458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2806458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2807458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2807458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2808458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2808458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2809458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2809458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2810458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2810458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2811458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2811458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2812458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2812458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2813458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2813458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2814458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2814458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2815458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2815458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2816458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2816458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2817458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2817458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2818458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2818458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2819458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2819458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2820458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2820458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2821458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2821458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2822458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2822458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2823458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2823458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2824458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2824458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2825458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2825458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2826458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2826458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2827458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2827458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2828458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2828458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2829458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2829458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2830458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2830458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2831458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2831458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2832458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2832458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2833458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2833458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2834458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2834458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2835458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2835458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2836458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2836458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2837458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2837458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2838458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2838458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2839458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2839458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2840458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2840458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2841458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2841458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2842458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2842458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2843458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2843458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2844458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2844458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2845458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2845458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2846458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2846458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2847458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2847458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2848458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2848458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2849458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2849458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2850458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2850458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2851458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2851458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2852458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2852458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2853458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2853458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2854458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2854458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2855458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2855458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2856458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2856458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2857458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2857458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2858458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2858458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2859458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2859458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2860458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2860458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2861458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2861458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2862458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2862458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2863458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2863458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2864458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2864458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2865458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2865458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2866458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2866458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2867458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2867458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2868458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2868458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2869458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2869458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2870458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2870458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2871458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2871458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2872458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2872458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2873458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2873458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2874458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2874458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2875458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2875458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2876458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2876458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2877458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2877458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2878458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2878458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2879458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2879458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2880458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2880458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2881458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2881458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2882458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2882458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2883458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2883458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2884458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2884458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2885458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2885458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2886458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2886458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2887458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2887458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2888458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2888458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2889458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2889458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2890458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2890458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2891458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2891458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2892458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2892458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2893458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2893458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2894458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2894458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2895458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2895458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2896458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2896458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2897458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2897458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2898458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2898458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2899458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2899458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2900458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2900458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2901458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2901458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2902458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2902458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2903458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2903458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2904458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2904458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2905458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2905458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2906458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2906458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2907458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2907458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2908458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2908458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2909458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2909458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2910458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2910458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2911458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2911458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2912458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2912458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2913458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2913458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2914458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2914458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2915458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2915458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2916458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2916458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2917458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2917458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2918458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2918458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2919458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2919458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2920458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2920458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2921458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2921458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2922458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2922458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2923458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2923458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2924458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2924458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2925458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2925458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2926458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2926458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2927458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2927458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2928458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2928458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2929458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2929458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2930458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2930458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2931458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2931458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2932458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2932458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2933458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2933458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2934458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2934458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2935458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2935458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2936458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2936458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2937458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2937458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2938458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2938458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2939458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2939458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2940458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2940458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2941458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2941458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2942458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2942458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2943458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2943458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2944458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2944458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2945458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2945458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2946458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2946458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2947458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2947458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2948458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2948458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2949458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2949458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2950458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2950458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2951458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2951458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2952458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2952458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2953458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2953458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2954458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2954458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2955458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2955458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2956458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2956458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2957458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2957458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2958458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2958458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2959458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2959458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2960458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2960458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2961458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2961458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2962458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2962458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2963458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2963458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2964458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2964458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2965458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2965458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2966458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2966458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2967458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2967458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2968458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2968458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2969458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2969458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2970458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2970458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2971458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2971458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2972458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2972458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2973458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2973458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2974458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2974458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2975458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2975458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2976458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2976458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2977458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2977458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2978458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2978458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2979458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2979458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2980458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2980458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2981458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2981458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2982458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2982458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2983458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2983458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2984458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2984458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2985458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2985458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2986458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2986458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2987458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2987458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2988458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2988458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2989458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2989458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2990458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2990458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2991458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2991458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2992458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2992458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2993458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2993458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2994458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2994458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2995458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2995458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2996458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2996458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2997458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2997458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2998458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2998458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (2999458) HTTP_CLIENT: No transport found[0m
+[0;31mE (2999458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3000458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3000458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3001458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3001458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3002458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3002458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3003458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3003458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3004458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3004458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3005458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3005458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3006458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3006458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3007458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3007458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3008458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3008458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3009458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3009458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3010458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3010458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3011458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3011458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3012458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3012458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3013458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3013458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3014458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3014458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3015458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3015458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3016458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3016458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3017458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3017458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3018458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3018458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3019458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3019458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3020458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3020458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3021458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3021458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3022458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3022458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3023458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3023458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3024458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3024458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3025458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3025458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3026458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3026458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3027458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3027458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3028458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3028458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3029458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3029458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3030458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3030458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3031458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3031458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3032458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3032458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3033458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3033458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3034458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3034458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3035458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3035458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3036458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3036458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3037458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3037458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3038458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3038458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3039458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3039458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3040458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3040458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3041458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3041458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3042458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3042458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3043458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3043458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3044458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3044458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3045458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3045458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3046458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3046458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3047458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3047458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3048458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3048458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3049458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3049458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3050458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3050458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3051458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3051458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3052458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3052458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3053458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3053458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3054458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3054458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3055458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3055458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3056458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3056458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3057458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3057458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3058458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3058458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3059458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3059458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3060458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3060458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3061458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3061458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3062458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3062458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3063458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3063458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3064458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3064458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3065458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3065458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3066458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3066458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3067458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3067458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3068458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3068458) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3069458) HTTP_CLIENT: No transport found[0m
+[0;31mE (3069458) webclient: La requête a échoué, code d'erreur = 28677[0m
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x0 (DOWNLOAD(USB/UART0))
+waiting for download
+��      ��      ��      ��      ��      ��      ��      ��     ���      ��      ��      ��      ��      ��      ��      ��     ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3818,len:0x16e0
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xc00
+load:0x403cc700,len:0x2eb0
+entry 0x403c9908
+[0;32mI (27) boot: ESP-IDF 5.1.1 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Dec 23 2023 20:28:24[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.1[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006

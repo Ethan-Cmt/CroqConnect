@@ -1,0 +1,265 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3818,len:0x16e0
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xc00
+load:0x403cc700,len:0x2eb0
+entry 0x403c9908
+[0;32mI (27) boot: ESP-IDF 5.1.1 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Dec 23 2023 21:23:34[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.1[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (72) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (79) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (87) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=3c090020 size=244a4h (148644) map[0m
+[0;32mI (126) esp_image: segment 1: paddr=000344cc vaddr=3fc97100 size=04428h ( 17448) load[0m
+[0;32mI (130) esp_image: segment 2: paddr=000388fc vaddr=40374000 size=0771ch ( 30492) load[0m
+[0;32mI (139) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=8dce4h (580836) map[0m
+[0;32mI (244) esp_image: segment 4: paddr=000cdd0c vaddr=4037b71c size=0b9a8h ( 47528) load[0m
+[0;32mI (263) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (263) boot: Disabling RNG early entropy source...[0m
+[0;32mI (275) cpu_start: Multicore app[0m
+[0;32mI (275) cpu_start: Pro cpu up.[0m
+[0;32mI (275) cpu_start: Starting app cpu, entry point is 0x40375418[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (293) cpu_start: Pro cpu start user code[0m
+[0;32mI (293) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (294) cpu_start: Application information:[0m
+[0;32mI (296) cpu_start: Project name:     CroqConnect[0m
+[0;32mI (302) cpu_start: App version:      1[0m
+[0;32mI (306) cpu_start: Compile time:     Dec 23 2023 21:23:12[0m
+[0;32mI (312) cpu_start: ELF file SHA256:  f6b6e33d4cfeb802...[0m
+[0;32mI (318) cpu_start: ESP-IDF:          5.1.1[0m
+[0;32mI (323) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (328) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (333) cpu_start: Chip rev:         v0.1[0m
+[0;32mI (337) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (345) heap_init: At 3FC9F268 len 0004A4A8 (297 KiB): DRAM[0m
+[0;32mI (351) heap_init: At 3FCE9710 len 00005724 (21 KiB): STACK/DRAM[0m
+[0;32mI (357) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (364) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (371) spi_flash: detected chip: gd[0m
+[0;32mI (374) spi_flash: flash io: dio[0m
+[0;32mI (378) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (385) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (392) app_start: Starting scheduler on CPU0[0m
+[0;32mI (397) app_start: Starting scheduler on CPU1[0m
+[0;32mI (397) main_task: Started on CPU0[0m
+[0;32mI (407) main_task: Calling app_main()[0m
+[0;32mI (437) pp: pp rom version: e7ae62f[0m
+[0;32mI (437) net80211: net80211 rom version: e7ae62f[0m
+I (447) wifi:wifi driver task: 3fca7e60, prio:23, stack:6656, core=0
+I (457) wifi:wifi firmware version: ce9244d
+I (457) wifi:wifi certification version: v7.0
+I (457) wifi:config NVS flash: enabled
+I (457) wifi:config nano formating: disabled
+I (457) wifi:Init data frame dynamic rx buffer num: 32
+I (467) wifi:Init management frame dynamic rx buffer num: 32
+I (467) wifi:Init management short buffer num: 32
+I (477) wifi:Init dynamic tx buffer num: 32
+I (477) wifi:Init static tx FG buffer num: 2
+I (487) wifi:Init static rx buffer size: 1600
+I (487) wifi:Init static rx buffer num: 10
+I (487) wifi:Init dynamic rx buffer num: 32
+[0;32mI (497) wifi_init: rx ba win: 6[0m
+[0;32mI (497) wifi_init: tcpip mbox: 32[0m
+[0;32mI (507) wifi_init: udp mbox: 6[0m
+[0;32mI (507) wifi_init: tcp mbox: 6[0m
+[0;32mI (507) wifi_init: tcp tx win: 5744[0m
+[0;32mI (517) wifi_init: tcp rx win: 5744[0m
+[0;32mI (517) wifi_init: tcp mss: 1440[0m
+[0;32mI (517) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (527) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (537) phy_init: phy_version 601,98f2a71,Jun 29 2023,09:58:12[0m
+I (577) wifi:mode : sta (34:85:18:91:fb:cc)
+I (577) wifi:enable tsf
+[0;32mI (577) WIFI: WiFi station started[0m
+Connecting to WiFi...
+Connected to WiFi
+[0;31mE (1577) HTTP_CLIENT: No transport found[0m
+[0;31mE (1577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;32mI (1577) main_task: Returned from app_main()[0m
+I (1577) wifi:new:<11,0>, old:<1,0>, ap:<255,255>, sta:<11,0>, prof:1
+I (1587) wifi:state: init -> auth (b0)
+I (1597) wifi:state: auth -> assoc (0)
+I (1597) wifi:state: assoc -> run (10)
+I (1617) wifi:connected with freebox_XZNEAJ, aid = 7, channel 11, BW20, bssid = 68:a3:78:76:64:aa
+I (1617) wifi:security: WPA2-PSK, phy: bgn, rssi: -62
+I (1617) wifi:pm start, type: 1
+
+I (1617) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000
+[0;32mI (1627) WIFI: Station connected to SSID freebox_XZNEAJ, channel 11[0m
+I (1637) wifi:AP's beacon interval = 122880 us, DTIM period = 2
+[0;31mE (2577) HTTP_CLIENT: No transport found[0m
+[0;31mE (2577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (3577) HTTP_CLIENT: No transport found[0m
+[0;31mE (3577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (4577) HTTP_CLIENT: No transport found[0m
+[0;31mE (4577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (5577) HTTP_CLIENT: No transport found[0m
+[0;31mE (5577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (6577) HTTP_CLIENT: No transport found[0m
+[0;31mE (6577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (7577) HTTP_CLIENT: No transport found[0m
+[0;31mE (7577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (8577) HTTP_CLIENT: No transport found[0m
+[0;31mE (8577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (9577) HTTP_CLIENT: No transport found[0m
+[0;31mE (9577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (10577) HTTP_CLIENT: No transport found[0m
+[0;31mE (10577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (11577) HTTP_CLIENT: No transport found[0m
+[0;31mE (11577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (12577) HTTP_CLIENT: No transport found[0m
+[0;31mE (12577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (13577) HTTP_CLIENT: No transport found[0m
+[0;31mE (13577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (14577) HTTP_CLIENT: No transport found[0m
+[0;31mE (14577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (15577) HTTP_CLIENT: No transport found[0m
+[0;31mE (15577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (16577) HTTP_CLIENT: No transport found[0m
+[0;31mE (16577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (17577) HTTP_CLIENT: No transport found[0m
+[0;31mE (17577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (18577) HTTP_CLIENT: No transport found[0m
+[0;31mE (18577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (19577) HTTP_CLIENT: No transport found[0m
+[0;31mE (19577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (20577) HTTP_CLIENT: No transport found[0m
+[0;31mE (20577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (21577) HTTP_CLIENT: No transport found[0m
+[0;31mE (21577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (22577) HTTP_CLIENT: No transport found[0m
+[0;31mE (22577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (23577) HTTP_CLIENT: No transport found[0m
+[0;31mE (23577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (24577) HTTP_CLIENT: No transport found[0m
+[0;31mE (24577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (25577) HTTP_CLIENT: No transport found[0m
+[0;31mE (25577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (26577) HTTP_CLIENT: No transport found[0m
+[0;31mE (26577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (27577) HTTP_CLIENT: No transport found[0m
+[0;31mE (27577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (28577) HTTP_CLIENT: No transport found[0m
+[0;31mE (28577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (29577) HTTP_CLIENT: No transport found[0m
+[0;31mE (29577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (30577) HTTP_CLIENT: No transport found[0m
+[0;31mE (30577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (31577) HTTP_CLIENT: No transport found[0m
+[0;31mE (31577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (32577) HTTP_CLIENT: No transport found[0m
+[0;31mE (32577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (33577) HTTP_CLIENT: No transport found[0m
+[0;31mE (33577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (34577) HTTP_CLIENT: No transport found[0m
+[0;31mE (34577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (35577) HTTP_CLIENT: No transport found[0m
+[0;31mE (35577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (36577) HTTP_CLIENT: No transport found[0m
+[0;31mE (36577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (37577) HTTP_CLIENT: No transport found[0m
+[0;31mE (37577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (38577) HTTP_CLIENT: No transport found[0m
+[0;31mE (38577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (39577) HTTP_CLIENT: No transport found[0m
+[0;31mE (39577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (40577) HTTP_CLIENT: No transport found[0m
+[0;31mE (40577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (41577) HTTP_CLIENT: No transport found[0m
+[0;31mE (41577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (42577) HTTP_CLIENT: No transport found[0m
+[0;31mE (42577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (43577) HTTP_CLIENT: No transport found[0m
+[0;31mE (43577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (44577) HTTP_CLIENT: No transport found[0m
+[0;31mE (44577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (45577) HTTP_CLIENT: No transport found[0m
+[0;31mE (45577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (46577) HTTP_CLIENT: No transport found[0m
+[0;31mE (46577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (47577) HTTP_CLIENT: No transport found[0m
+[0;31mE (47577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (48577) HTTP_CLIENT: No transport found[0m
+[0;31mE (48577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (49577) HTTP_CLIENT: No transport found[0m
+[0;31mE (49577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (50577) HTTP_CLIENT: No transport found[0m
+[0;31mE (50577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (51577) HTTP_CLIENT: No transport found[0m
+[0;31mE (51577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (52577) HTTP_CLIENT: No transport found[0m
+[0;31mE (52577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (53577) HTTP_CLIENT: No transport found[0m
+[0;31mE (53577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (54577) HTTP_CLIENT: No transport found[0m
+[0;31mE (54577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (55577) HTTP_CLIENT: No transport found[0m
+[0;31mE (55577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (56577) HTTP_CLIENT: No transport found[0m
+[0;31mE (56577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (57577) HTTP_CLIENT: No transport found[0m
+[0;31mE (57577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (58577) HTTP_CLIENT: No transport found[0m
+[0;31mE (58577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (59577) HTTP_CLIENT: No transport found[0m
+[0;31mE (59577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (60577) HTTP_CLIENT: No transport found[0m
+[0;31mE (60577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (61577) HTTP_CLIENT: No transport found[0m
+[0;31mE (61577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (62577) HTTP_CLIENT: No transport found[0m
+[0;31mE (62577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (63577) HTTP_CLIENT: No transport found[0m
+[0;31mE (63577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (64577) HTTP_CLIENT: No transport found[0m
+[0;31mE (64577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (65577) HTTP_CLIENT: No transport found[0m
+[0;31mE (65577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (66577) HTTP_CLIENT: No transport found[0m
+[0;31mE (66577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (67577) HTTP_CLIENT: No transport found[0m
+[0;31mE (67577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (68577) HTTP_CLIENT: No transport found[0m
+[0;31mE (68577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (69577) HTTP_CLIENT: No transport found[0m
+[0;31mE (69577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (70577) HTTP_CLIENT: No transport found[0m
+[0;31mE (70577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (71577) HTTP_CLIENT: No transport found[0m
+[0;31mE (71577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (72577) HTTP_CLIENT: No transport found[0m
+[0;31mE (72577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (73577) HTTP_CLIENT: No transport found[0m
+[0;31mE (73577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (74577) HTTP_CLIENT: No transport found[0m
+[0;31mE (74577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (75577) HTTP_CLIENT: No transport found[0m
+[0;31mE (75577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (76577) HTTP_CLIENT: No transport found[0m
+[0;31mE (76577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (77577) HTTP_CLIENT: No transport found[0m
+[0;31mE (77577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (78577) HTTP_CLIENT: No transport found[0m
+[0;31mE (78577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (79577) HTTP_CLIENT: No transport found[0m
+[0;31mE (79577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (80577) HTTP_CLIENT: No transport found[0m
+[0;31mE (80577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (81577) HTTP_CLIENT: No transport found[0m
+[0;31mE (81577) webclient: La requête a échoué, code d'erreur = 28677[0m
+[0;31mE (82577) HTTP_CLIENT: No transport found[0m
+[0;31mE (82577) webclient: La requête a échoué, code d'err

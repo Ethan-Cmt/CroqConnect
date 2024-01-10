@@ -1,0 +1,477 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3818,len:0x16e0
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xc00
+load:0x403cc700,len:0x2eb0
+entry 0x403c9908
+[0;32mI (27) boot: ESP-IDF 5.1.1 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jan  9 2024 15:40:36[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.1[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (72) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (79) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (87) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=263b0h (156592) map[0m
+[0;32mI (127) esp_image: segment 1: paddr=000363d8 vaddr=3fc97200 size=042fch ( 17148) load[0m
+[0;32mI (131) esp_image: segment 2: paddr=0003a6dc vaddr=40374000 size=0593ch ( 22844) load[0m
+[0;32mI (138) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=94ce0h (609504) map[0m
+[0;32mI (251) esp_image: segment 4: paddr=000d4d08 vaddr=4037993c size=0d7c8h ( 55240) load[0m
+[0;32mI (272) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (272) boot: Disabling RNG early entropy source...[0m
+[0;32mI (283) cpu_start: Multicore app[0m
+[0;32mI (283) cpu_start: Pro cpu up.[0m
+[0;32mI (284) cpu_start: Starting app cpu, entry point is 0x40375acc[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (302) cpu_start: Pro cpu start user code[0m
+[0;32mI (302) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (302) cpu_start: Application information:[0m
+[0;32mI (305) cpu_start: Project name:     CroqConnect[0m
+[0;32mI (310) cpu_start: App version:      1[0m
+[0;32mI (314) cpu_start: Compile time:     Jan  9 2024 15:40:15[0m
+[0;32mI (321) cpu_start: ELF file SHA256:  0934b13b...[0m
+[0;32mI (326) cpu_start: ESP-IDF:          5.1.1[0m
+[0;32mI (331) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (335) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (340) cpu_start: Chip rev:         v0.1[0m
+[0;32mI (345) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (352) heap_init: At 3FC9F4B8 len 0004A258 (296 KiB): DRAM[0m
+[0;32mI (358) heap_init: At 3FCE9710 len 00005724 (21 KiB): STACK/DRAM[0m
+[0;32mI (365) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (371) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (378) spi_flash: detected chip: gd[0m
+[0;32mI (382) spi_flash: flash io: dio[0m
+[0;32mI (386) app_start: Starting scheduler on CPU0[0m
+[0;32mI (391) app_start: Starting scheduler on CPU1[0m
+[0;32mI (391) main_task: Started on CPU0[0m
+[0;32mI (401) main_task: Calling app_main()[0m
+[0;32mI (431) pp: pp rom version: e7ae62f[0m
+[0;32mI (431) net80211: net80211 rom version: e7ae62f[0m
+I (441) wifi:wifi driver task: 3fca9208, prio:23, stack:6656, core=0
+I (461) wifi:wifi firmware version: ce9244d
+I (461) wifi:wifi certification version: v7.0
+I (461) wifi:config NVS flash: enabled
+I (461) wifi:config nano formating: disabled
+I (461) wifi:Init data frame dynamic rx buffer num: 32
+I (471) wifi:Init management frame dynamic rx buffer num: 32
+I (471) wifi:Init management short buffer num: 32
+I (481) wifi:Init dynamic tx buffer num: 32
+I (481) wifi:Init static tx FG buffer num: 2
+I (481) wifi:Init static rx buffer size: 1600
+I (491) wifi:Init static rx buffer num: 10
+I (491) wifi:Init dynamic rx buffer num: 32
+[0;32mI (501) wifi_init: rx ba win: 6[0m
+[0;32mI (501) wifi_init: tcpip mbox: 32[0m
+[0;32mI (501) wifi_init: udp mbox: 6[0m
+[0;32mI (511) wifi_init: tcp mbox: 6[0m
+[0;32mI (511) wifi_init: tcp tx win: 5760[0m
+[0;32mI (511) wifi_init: tcp rx win: 5760[0m
+[0;32mI (521) wifi_init: tcp mss: 1440[0m
+[0;32mI (521) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (531) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (531) phy_init: phy_version 601,98f2a71,Jun 29 2023,09:58:12[0m
+I (581) wifi:mode : sta (34:85:18:91:fb:cc)
+I (581) wifi:enable tsf
+[0;32mI (581) WIFI: WiFi station started[0m
+Connecting to WiFi...
+[0;32mI (1581) WIFI: Connected to WiFi[0m
+E (2581) wifi:sta is connecting, return error
+E (3581) wifi:sta is connecting, return error
+[0;32mI (3981) WIFI: Station disconnected from SSID iPhone de Ethan, reason 201[0m
+[0;32mI (3981) wifi_init: rx ba win: 6[0m
+[0;32mI (3981) wifi_init: tcpip mbox: 32[0m
+[0;32mI (3991) wifi_init: udp mbox: 6[0m
+[0;32mI (3991) wifi_init: tcp mbox: 6[0m
+[0;32mI (3991) wifi_init: tcp tx win: 5760[0m
+[0;32mI (4001) wifi_init: tcp rx win: 5760[0m
+[0;32mI (4001) wifi_init: tcp mss: 1440[0m
+[0;32mI (4011) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (4011) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (4021) WIFI: Setting SoftAP configuration SSID JohnsonConnect...[0m
+I (4021) wifi:mode : softAP (34:85:18:91:fb:cd)
+I (4081) wifi:Total power save buffer number: 16
+I (4081) wifi:Init max length of beacon: 752/752
+I (4081) wifi:Init max length of beacon: 752/752
+I (4141) wifi:Total power save buffer number: 16
+[0;32mI (4141) WIFI: WiFi station stopped[0m
+[0;32mI (4141) WIFI: SoftAP started[0m
+[0;32mI (4141) WIFI: SoftAP stopped[0m
+[0;32mI (4151) WIFI: SoftAP started[0m
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3818,len:0x16e0
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xc00
+load:0x403cc700,len:0x2eb0
+entry 0x403c9908
+[0;32mI (27) boot: ESP-IDF 5.1.1 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jan  9 2024 15:40:36[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.1[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (72) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (79) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (87) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=263b0h (156592) map[0m
+[0;32mI (127) esp_image: segment 1: paddr=000363d8 vaddr=3fc97200 size=042fch ( 17148) load[0m
+[0;32mI (131) esp_image: segment 2: paddr=0003a6dc vaddr=40374000 size=0593ch ( 22844) load[0m
+[0;32mI (138) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=94ce0h (609504) map[0m
+[0;32mI (251) esp_image: segment 4: paddr=000d4d08 vaddr=4037993c size=0d7c8h ( 55240) load[0m
+[0;32mI (272) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (272) boot: Disabling RNG early entropy source...[0m
+[0;32mI (283) cpu_start: Multicore app[0m
+[0;32mI (283) cpu_start: Pro cpu up.[0m
+[0;32mI (284) cpu_start: Starting app cpu, entry point is 0x40375acc[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (302) cpu_start: Pro cpu start user code[0m
+[0;32mI (302) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (302) cpu_start: Application information:[0m
+[0;32mI (305) cpu_start: Project name:     CroqConnect[0m
+[0;32mI (310) cpu_start: App version:      1[0m
+[0;32mI (314) cpu_start: Compile time:     Jan  9 2024 15:40:15[0m
+[0;32mI (321) cpu_start: ELF file SHA256:  0934b13b...[0m
+[0;32mI (326) cpu_start: ESP-IDF:          5.1.1[0m
+[0;32mI (331) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (335) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (340) cpu_start: Chip rev:         v0.1[0m
+[0;32mI (345) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (352) heap_init: At 3FC9F4B8 len 0004A258 (296 KiB): DRAM[0m
+[0;32mI (358) heap_init: At 3FCE9710 len 00005724 (21 KiB): STACK/DRAM[0m
+[0;32mI (365) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (371) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (378) spi_flash: detected chip: gd[0m
+[0;32mI (382) spi_flash: flash io: dio[0m
+[0;32mI (386) app_start: Starting scheduler on CPU0[0m
+[0;32mI (391) app_start: Starting scheduler on CPU1[0m
+[0;32mI (391) main_task: Started on CPU0[0m
+[0;32mI (401) main_task: Calling app_main()[0m
+[0;32mI (431) pp: pp rom version: e7ae62f[0m
+[0;32mI (431) net80211: net80211 rom version: e7ae62f[0m
+I (441) wifi:wifi driver task: 3fca9208, prio:23, stack:6656, core=0
+I (461) wifi:wifi firmware version: ce9244d
+I (461) wifi:wifi certification version: v7.0
+I (461) wifi:config NVS flash: enabled
+I (461) wifi:config nano formating: disabled
+I (461) wifi:Init data frame dynamic rx buffer num: 32
+I (471) wifi:Init management frame dynamic rx buffer num: 32
+I (471) wifi:Init management short buffer num: 32
+I (481) wifi:Init dynamic tx buffer num: 32
+I (481) wifi:Init static tx FG buffer num: 2
+I (481) wifi:Init static rx buffer size: 1600
+I (491) wifi:Init static rx buffer num: 10
+I (491) wifi:Init dynamic rx buffer num: 32
+[0;32mI (501) wifi_init: rx ba win: 6[0m
+[0;32mI (501) wifi_init: tcpip mbox: 32[0m
+[0;32mI (501) wifi_init: udp mbox: 6[0m
+[0;32mI (511) wifi_init: tcp mbox: 6[0m
+[0;32mI (511) wifi_init: tcp tx win: 5760[0m
+[0;32mI (511) wifi_init: tcp rx win: 5760[0m
+[0;32mI (521) wifi_init: tcp mss: 1440[0m
+[0;32mI (521) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (531) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (531) phy_init: phy_version 601,98f2a71,Jun 29 2023,09:58:12[0m
+I (581) wifi:mode : sta (34:85:18:91:fb:cc)
+I (581) wifi:enable tsf
+[0;32mI (581) WIFI: WiFi station started[0m
+Connecting to WiFi...
+[0;32mI (1581) WIFI: Connected to WiFi[0m
+I (1581) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1
+I (1581) wifi:state: init -> auth (b0)
+I (2361) wifi:state: auth -> assoc (0)
+I (2371) wifi:state: assoc -> run (10)
+I (2411) wifi:connected with iPhone de Ethan, aid = 1, channel 6, BW20, bssid = d2:fa:a1:8d:7a:57
+I (2411) wifi:security: WPA3-SAE, phy: bgn, rssi: -51
+I (2421) wifi:pm start, type: 1
+
+I (2421) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000
+[0;32mI (2431) WIFI: Station connected to SSID iPhone de Ethan, channel 6[0m
+I (2491) wifi:AP's beacon interval = 102400 us, DTIM period = 1
+[0;32mI (2581) WIFI: Connected to WiFi[0m
+E (3581) wifi:sta is connecting, return error
+E (4581) wifi:sta is connecting, return error
+[0;32mI (5581) WIFI: Connected to WiFi[0m
+E (6581) wifi:sta is connecting, return error
+E (7581) wifi:sta is connecting, return error
+[0;32mI (8581) WIFI: Connected to WiFi[0m
+E (9581) wifi:sta is connecting, return error
+E (10581) wifi:sta is connecting, return error
+[0;32mI (11581) WIFI: Connected to WiFi[0m
+E (12581) wifi:sta is connecting, return error
+E (13581) wifi:sta is connecting, return error
+[0;32mI (14581) WIFI: Connected to WiFi[0m
+E (15581) wifi:sta is connecting, return error
+E (16581) wifi:sta is connecting, return error
+[0;32mI (17581) WIFI: Connected to WiFi[0m
+E (18581) wifi:sta is connecting, return error
+E (19581) wifi:sta is connecting, return error
+[0;32mI (20581) WIFI: Connected to WiFi[0m
+E (21581) wifi:sta is connecting, return error
+E (22581) wifi:sta is connecting, return error
+[0;32mI (23581) WIFI: Connected to WiFi[0m
+E (24581) wifi:sta is connecting, return error
+E (25581) wifi:sta is connecting, return error
+[0;32mI (26581) WIFI: Connected to WiFi[0m
+E (27581) wifi:sta is connecting, return error
+E (28581) wifi:sta is connecting, return error
+[0;32mI (29581) WIFI: Connected to WiFi[0m
+E (30581) wifi:sta is connecting, return error
+E (31581) wifi:sta is connecting, return error
+[0;32mI (32581) WIFI: Connected to WiFi[0m
+E (33581) wifi:sta is connecting, return error
+E (34581) wifi:sta is connecting, return error
+[0;32mI (35581) WIFI: Connected to WiFi[0m
+E (36581) wifi:sta is connecting, return error
+E (37581) wifi:sta is connecting, return error
+[0;32mI (38581) WIFI: Connected to WiFi[0m
+E (39581) wifi:sta is connecting, return error
+E (40581) wifi:sta is connecting, return error
+[0;32mI (41581) WIFI: Connected to WiFi[0m
+E (42581) wifi:sta is connecting, return error
+E (43581) wifi:sta is connecting, return error
+[0;32mI (44581) WIFI: Connected to WiFi[0m
+E (45581) wifi:sta is connecting, return error
+E (46581) wifi:sta is connecting, return error
+[0;32mI (47581) WIFI: Connected to WiFi[0m
+E (48581) wifi:sta is connecting, return error
+E (49581) wifi:sta is connecting, return error
+[0;32mI (50581) WIFI: Connected to WiFi[0m
+E (51581) wifi:sta is connecting, return error
+E (52581) wifi:sta is connecting, return error
+[0;32mI (53581) WIFI: Connected to WiFi[0m
+E (54581) wifi:sta is connecting, return error
+E (55581) wifi:sta is connecting, return error
+[0;32mI (56581) WIFI: Connected to WiFi[0m
+E (57581) wifi:sta is connecting, return error
+E (58581) wifi:sta is connecting, return error
+[0;32mI (59581) WIFI: Connected to WiFi[0m
+E (60581) wifi:sta is connecting, return error
+E (61581) wifi:sta is connecting, return error
+[0;32mI (62581) WIFI: Connected to WiFi[0m
+E (63581) wifi:sta is connecting, return error
+E (64581) wifi:sta is connecting, return error
+[0;32mI (65581) WIFI: Connected to WiFi[0m
+E (66581) wifi:sta is connecting, return error
+E (67581) wifi:sta is connecting, return error
+[0;32mI (68581) WIFI: Connected to WiFi[0m
+E (69581) wifi:sta is connecting, return error
+E (70581) wifi:sta is connecting, return error
+[0;32mI (71581) WIFI: Connected to WiFi[0m
+E (72581) wifi:sta is connecting, return error
+E (73581) wifi:sta is connecting, return error
+[0;32mI (74581) WIFI: Connected to WiFi[0m
+E (75581) wifi:sta is connecting, return error
+E (76581) wifi:sta is connecting, return error
+[0;32mI (77581) WIFI: Connected to WiFi[0m
+E (78581) wifi:sta is connecting, return error
+E (79581) wifi:sta is connecting, return error
+[0;32mI (80581) WIFI: Connected to WiFi[0m
+E (81581) wifi:sta is connecting, return error
+E (82581) wifi:sta is connecting, return error
+[0;32mI (83581) WIFI: Connected to WiFi[0m
+E (84581) wifi:sta is connecting, return error
+E (85581) wifi:sta is connecting, return error
+[0;32mI (86581) WIFI: Connected to WiFi[0m
+E (87581) wifi:sta is connecting, return error
+E (88581) wifi:sta is connecting, return error
+[0;32mI (89581) WIFI: Connected to WiFi[0m
+E (90581) wifi:sta is connecting, return error
+E (91581) wifi:sta is connecting, return error
+[0;32mI (92581) WIFI: Connected to WiFi[0m
+E (93581) wifi:sta is connecting, return error
+E (94581) wifi:sta is connecting, return error
+[0;32mI (95581) WIFI: Connected to WiFi[0m
+E (96581) wifi:sta is connecting, return error
+E (97581) wifi:sta is connecting, return error
+[0;32mI (98581) WIFI: Connected to WiFi[0m
+E (99581) wifi:sta is connecting, return error
+E (100581) wifi:sta is connecting, return error
+[0;32mI (101581) WIFI: Connected to WiFi[0m
+E (102581) wifi:sta is connecting, return error
+E (103581) wifi:sta is connecting, return error
+[0;32mI (104581) WIFI: Connected to WiFi[0m
+E (105581) wifi:sta is connecting, return error
+E (106581) wifi:sta is connecting, return error
+[0;32mI (107581) WIFI: Connected to WiFi[0m
+E (108581) wifi:sta is connecting, return error
+E (109581) wifi:sta is connecting, return error
+[0;32mI (110581) WIFI: Connected to WiFi[0m
+E (111581) wifi:sta is connecting, return error
+E (112581) wifi:sta is connecting, return error
+[0;32mI (113581) WIFI: Connected to WiFi[0m
+E (114581) wifi:sta is connecting, return error
+E (115581) wifi:sta is connecting, return error
+[0;32mI (116581) WIFI: Connected to WiFi[0m
+E (117581) wifi:sta is connecting, return error
+E (118581) wifi:sta is connecting, return error
+[0;32mI (119581) WIFI: Connected to WiFi[0m
+E (120581) wifi:sta is connecting, return error
+E (121581) wifi:sta is connecting, return error
+[0;32mI (122581) WIFI: Connected to WiFi[0m
+E (123581) wifi:sta is connecting, return error
+E (124581) wifi:sta is connecting, return error
+[0;32mI (125581) WIFI: Connected to WiFi[0m
+E (126581) wifi:sta is connecting, return error
+E (127581) wifi:sta is connecting, return error
+[0;32mI (128581) WIFI: Connected to WiFi[0m
+E (129581) wifi:sta is connecting, return error
+E (130581) wifi:sta is connecting, return error
+[0;32mI (131581) WIFI: Connected to WiFi[0m
+E (132581) wifi:sta is connecting, return error
+E (133581) wifi:sta is connecting, return error
+[0;32mI (134581) WIFI: Connected to WiFi[0m
+E (135581) wifi:sta is connecting, return error
+E (136581) wifi:sta is connecting, return error
+[0;32mI (137581) WIFI: Connected to WiFi[0m
+E (138581) wifi:sta is connecting, return error
+E (139581) wifi:sta is connecting, return error
+[0;32mI (140581) WIFI: Connected to WiFi[0m
+E (141581) wifi:sta is connecting, return error
+E (142581) wifi:sta is connecting, return error
+[0;32mI (143581) WIFI: Connected to WiFi[0m
+E (144581) wifi:sta is connecting, return error
+E (145581) wifi:sta is connecting, return error
+[0;32mI (146581) WIFI: Connected to WiFi[0m
+E (147581) wifi:sta is connecting, return error
+E (148581) wifi:sta is connecting, return error
+[0;32mI (149581) WIFI: Connected to WiFi[0m
+E (150581) wifi:sta is connecting, return error
+E (151581) wifi:sta is connecting, return error
+[0;32mI (152581) WIFI: Connected to WiFi[0m
+E (153581) wifi:sta is connecting, return error
+E (154581) wifi:sta is connecting, return error
+[0;32mI (155581) WIFI: Connected to WiFi[0m
+E (156581) wifi:sta is connecting, return error
+E (157581) wifi:sta is connecting, return error
+[0;32mI (158581) WIFI: Connected to WiFi[0m
+E (159581) wifi:sta is connecting, return error
+E (160581) wifi:sta is connecting, return error
+[0;32mI (161581) WIFI: Connected to WiFi[0m
+E (162581) wifi:sta is connecting, return error
+E (163581) wifi:sta is connecting, return error
+[0;32mI (164581) WIFI: Connected to WiFi[0m
+E (165581) wifi:sta is connecting, return error
+E (166581) wifi:sta is connecting, return error
+[0;32mI (167581) WIFI: Connected to WiFi[0m
+E (168581) wifi:sta is connecting, return error
+E (169581) wifi:sta is connecting, return error
+[0;32mI (170581) WIFI: Connected to WiFi[0m
+E (171581) wifi:sta is connecting, return error
+E (172581) wifi:sta is connecting, return error
+[0;32mI (173581) WIFI: Connected to WiFi[0m
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3818,len:0x16e0
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xc00
+load:0x403cc700,len:0x2eb0
+entry 0x403c9908
+[0;32mI (27) boot: ESP-IDF 5.1.1 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jan  9 2024 15:40:36[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.1[0m
+[0;32mI (34) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 16MB[0m
+[0;32mI (48) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (57) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (72) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (79) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (87) boot: End of partition table[0m
+[0;32mI (91) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=263b0h (156592) map[0m
+[0;32mI (127) esp_image: segment 1: paddr=000363d8 vaddr=3fc97200 size=042fch ( 17148) load[0m
+[0;32mI (131) esp_image: segment 2: paddr=0003a6dc vaddr=40374000 size=0593ch ( 22844) load[0m
+[0;32mI (138) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=94ce0h (609504) map[0m
+[0;32mI (251) esp_image: segment 4: paddr=000d4d08 vaddr=4037993c size=0d7c8h ( 55240) load[0m
+[0;32mI (272) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (272) boot: Disabling RNG early entropy source...[0m
+[0;32mI (283) cpu_start: Multicore app[0m
+[0;32mI (283) cpu_start: Pro cpu up.[0m
+[0;32mI (284) cpu_start: Starting app cpu, entry point is 0x40375acc[0m
+[0;32mI (0) cpu_start: App cpu up.[0m
+[0;32mI (302) cpu_start: Pro cpu start user code[0m
+[0;32mI (302) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (302) cpu_start: Application information:[0m
+[0;32mI (305) cpu_start: Project name:     CroqConnect[0m
+[0;32mI (310) cpu_start: App version:      1[0m
+[0;32mI (314) cpu_start: Compile time:     Jan  9 2024 15:40:15[0m
+[0;32mI (321) cpu_start: ELF file SHA256:  0934b13b...[0m
+[0;32mI (326) cpu_start: ESP-IDF:          5.1.1[0m
+[0;32mI (331) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (335) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (340) cpu_start: Chip rev:         v0.1[0m
+[0;32mI (345) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (352) heap_init: At 3FC9F4B8 len 0004A258 (296 KiB): DRAM[0m
+[0;32mI (358) heap_init: At 3FCE9710 len 00005724 (21 KiB): STACK/DRAM[0m
+[0;32mI (365) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (371) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (378) spi_flash: detected chip: gd[0m
+[0;32mI (382) spi_flash: flash io: dio[0m
+[0;32mI (386) app_start: Starting scheduler on CPU0[0m
+[0;32mI (391) app_start: Starting scheduler on CPU1[0m
+[0;32mI (391) main_task: Started on CPU0[0m
+[0;32mI (401) main_task: Calling app_main()[0m
+[0;32mI (431) pp: pp rom version: e7ae62f[0m
+[0;32mI (431) net80211: net80211 rom version: e7ae62f[0m
+I (441) wifi:wifi driver task: 3fca9208, prio:23, stack:6656, core=0
+I (461) wifi:wifi firmware version: ce9244d
+I (461) wifi:wifi certification version: v7.0
+I (461) wifi:config NVS flash: enabled
+I (461) wifi:config nano formating: disabled
+I (461) wifi:Init data frame dynamic rx buffer num: 32
+I (471) wifi:Init management frame dynamic rx buffer num: 32
+I (471) wifi:Init management short buffer num: 32
+I (481) wifi:Init dynamic tx buffer num: 32
+I (481) wifi:Init static tx FG buffer num: 2
+I (481) wifi:Init static rx buffer size: 1600
+I (491) wifi:Init static rx buffer num: 10
+I (491) wifi:Init dynamic rx buffer num: 32
+[0;32mI (501) wifi_init: rx ba win: 6[0m
+[0;32mI (501) wifi_init: tcpip mbox: 32[0m
+[0;32mI (501) wifi_init: udp mbox: 6[0m
+[0;32mI (511) wifi_init: tcp mbox: 6[0m
+[0;32mI (511) wifi_init: tcp tx win: 5760[0m
+[0;32mI (511) wifi_init: tcp rx win: 5760[0m
+[0;32mI (521) wifi_init: tcp mss: 1440[0m
+[0;32mI (521) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (531) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (531) phy_init: phy_version 601,98f2a71,Jun 29 2023,09:58:12[0m
+I (581) wifi:mode : sta (34:85:18:91:fb:cc)
+I (581) wifi:enable tsf
+[0;32mI (581) WIFI: WiFi station started[0m
+Connecting to WiFi...
+[0;32mI (1581) WIFI: Connected to WiFi[0m
+E (2581) wifi:sta is connecting, return error
+E (3581) wifi:sta is connecting, return error
+[0;32mI (3981) WIFI: Station disconnected from SSID iPhone de Ethan, reason 201[0m
+[0;32mI (3981) wifi_init: rx ba win: 6[0m
+[0;32mI (3981) wifi_init: tcpip mbox: 32[0m
+[0;32mI (3991) wifi_init: udp mbox: 6[0m
+[0;32mI (3991) wifi_init: tcp mbox: 6[0m
+[0;32mI (3991) wifi_init: tcp tx win: 5760[0m
+[0;32mI (4001) wifi_init: tcp rx win: 5760[0m
+[0;32mI (4001) wifi_init: tcp mss: 1440[0m
+[0;32mI (4011) wifi_init: WiFi IRAM OP enabled

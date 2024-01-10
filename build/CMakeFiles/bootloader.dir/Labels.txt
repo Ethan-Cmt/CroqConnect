@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/CMakeFiles/bootloader
+/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/CMakeFiles/bootloader.rule
+/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/CMakeFiles/bootloader-complete.rule
+/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
