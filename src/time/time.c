@@ -36,18 +36,31 @@ void wait_for_time() {
 }
 
 void initialize_time() {
-    setenv("TZ", "Europe/Paris", 1); // Utilisation du fuseau horaire de la France
+    setenv("TZ", "UTC", 1); // Utilisation du temps universel coordonné (UTC)
     tzset();
 
     time_t now;
     struct tm timeinfo;
 
     time(&now);
-    localtime_r(&now, &timeinfo);
+    gmtime_r(&now, &timeinfo);
 
     char strftime_buf[64];
     strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
-    ESP_LOGI(TAG, "Heure actuelle : %s", strftime_buf);
+    ESP_LOGI(TAG, "Heure actuelle (UTC) : %s", strftime_buf);
+
+    // Ajuster le fuseau horaire en fonction du mois
+    if (timeinfo.tm_mon >= 3 && timeinfo.tm_mon < 10) {
+        setenv("TZ", "CEST-2", 1); // Heure d'été (Central European Summer Time)
+    } else {
+        setenv("TZ", "CET-1", 1); // Heure d'hiver (Central European Time)
+    }
+
+    tzset();
+
+    localtime_r(&now, &timeinfo);
+    strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
+    ESP_LOGI(TAG, "Heure actuelle (Fuseau horaire français) : %s", strftime_buf);
 }
 
 void check_and_distribute_croquettes() {
@@ -79,4 +92,24 @@ void initialize_periodic_task() {
     esp_timer_handle_t periodic_timer;
     esp_timer_create(&periodic_timer_args, &periodic_timer);
     esp_timer_start_periodic(periodic_timer, 60 * 1000 * 1000);  // Toutes les minutes
+}
+
+char* get_current_time_string() {
+    time_t now;
+    struct tm timeinfo;
+
+    time(&now);
+    localtime_r(&now, &timeinfo);
+
+    char strftime_buf[64];
+    strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
+
+    // Allouer dynamiquement de la mémoire pour stocker la chaîne et la retourner
+    char* result = malloc(strlen(strftime_buf) + 1);
+    if (result != NULL) {
+        strcpy(result, strftime_buf);
+    }
+
+    return result;
+    // WARNING : Penser à libérer la mémoire allouée avec 'free(current_time_str);'
 }

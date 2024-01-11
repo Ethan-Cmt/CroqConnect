@@ -8,6 +8,7 @@
 
 #include "com/wifi/wifi.h"
 #include "com/mqtt/client.h"
+#include "time/time.h"
 
 void app_main()
 {
@@ -21,8 +22,13 @@ void app_main()
         vTaskDelay(pdMS_TO_TICKS(100));
         if (ip_obtained)
         {
-            mqtt_app_start();
-            mqtt_publish_message("test", "tout va bien");
+            initialize_sntp();
+            wait_for_time();
+            initialize_time();
+
+            // Créer la tâche MQTT sur le cœur 1
+            xTaskCreatePinnedToCore(mqtt_task, "mqtt_task", configMINIMAL_STACK_SIZE * 4, NULL, tskIDLE_PRIORITY + 1, NULL, 1);
+
             break;
         }
     }

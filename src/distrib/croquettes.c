@@ -1,27 +1,24 @@
-#include "driver/gpio.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "driver/periph_ctrl.h"
-#include "driver/timer.h"
+#include "esp_log.h"
 
-#define SERVO_PIN GPIO_NUM_12
+#include "time/time.h"
+#include "com/mqtt/client.h"
 
-void initialize_servo() {
-    gpio_config_t io_conf = {
-        .pin_bit_mask = (1ULL<<SERVO_PIN),
-        .mode = GPIO_MODE_OUTPUT,
-    };
-    gpio_config(&io_conf);
-}
-
-void control_servo(int angle) {
-    gpio_set_level(SERVO_PIN, 1);
-    vTaskDelay(pdMS_TO_TICKS(1000 + angle * 10));
-    gpio_set_level(SERVO_PIN, 0);
-}
+static const char *TAG = "distrib";
 
 void distribute_croquettes() {
-    control_servo(90);
-    vTaskDelay(pdMS_TO_TICKS(250));
-    control_servo(0);
+    char* current_time_str = get_current_time_string();
+
+    if (current_time_str != NULL) {
+        char message[100];
+        snprintf(message, sizeof(message), "last ditrib : %s", current_time_str);
+
+        mqtt_publish_message("distribution/last", message, 1);
+
+        // Libérer la mémoire allouée par get_current_time_string
+        free(current_time_str);
+    } else {
+        ESP_LOGE(TAG, "Erreur lors de l'obtention de l'heure actuelle.");
+    }
 }

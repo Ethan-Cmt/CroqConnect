@@ -2,6 +2,8 @@
 #include "esp_log.h"
 #include "esp_event.h"
 
+#include "distrib/croquettes.h"
+
 #define MQTT_BROKER_ADDRESS "91.165.181.168"
 #define MQTT_BROKER_PORT "55555"
 
@@ -9,32 +11,59 @@ static const char *TAG = "mqtt";
 
 static esp_mqtt_client_handle_t client;
 
-static esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event)
-{
-    esp_mqtt_client_handle_t client = event->client;
-    // Gestionnaire d'événements pour les événements MQTT
-    switch (event->event_id)
-    {
-    case MQTT_EVENT_CONNECTED:
-        ESP_LOGI(TAG, "Connecté au broker MQTT");
-        // Souscrire à des sujets, publier, etc. ici
-        break;
-    case MQTT_EVENT_DISCONNECTED:
-        ESP_LOGI(TAG, "Déconnecté du broker MQTT");
-        break;
-    case MQTT_EVENT_SUBSCRIBED:
-        ESP_LOGI(TAG, "Abonnement réussi à un sujet MQTT");
-        break;
-    case MQTT_EVENT_PUBLISHED:
-        ESP_LOGI(TAG, "Message MQTT publié avec succès");
-        break;
-    case MQTT_EVENT_DATA:
-        ESP_LOGI(TAG, "Message MQTT reçu");
-        // Gérer les messages MQTT entrants ici
-        break;
-    default:
-        break;
+void mqtt_process_received_data(const char *topic, int topic_len, const char *data, int data_len) {
+    ESP_LOGI(TAG, "Topic: %.*s, Data: %.*s", topic_len, topic, data_len, data);
+
+    // Vérifier si le message est reçu sur le topic 'distribution'
+    if (strncmp(topic, "distribution", topic_len) == 0) {
+        distribute_croquettes();
     }
+}
+
+void mqtt_publish_message(const char *topic, const char *message, int retain)
+{
+    esp_mqtt_client_publish(client, topic, message, 0, 1, retain);
+    ESP_LOGI(TAG, "Message publié sur le topic %s : %s", topic, message);
+}
+
+void mqtt_subscribe(const char *topic, int qos)
+{
+    esp_mqtt_client_subscribe(client, (char *)topic, qos);
+    ESP_LOGI(TAG, "Abonnement au topic MQTT : %s", topic);
+}
+
+void mqtt_unsubscribe(const char *topic)
+{
+    esp_mqtt_client_unsubscribe(client, topic);
+    ESP_LOGI(TAG, "Désabonnement du topic MQTT : %s", topic);
+}
+
+static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t event_base, int32_t event_id, void *event_data) {
+    esp_mqtt_event_handle_t event = (esp_mqtt_event_handle_t) event_data;
+    esp_mqtt_client_handle_t client = (esp_mqtt_client_handle_t) event_handler_arg;
+
+    switch (event_id) {
+        case MQTT_EVENT_CONNECTED:
+            ESP_LOGI(TAG, "Connecté au broker MQTT");
+            mqtt_subscribe("distribution", 1);
+            break;
+        case MQTT_EVENT_DISCONNECTED:
+            ESP_LOGI(TAG, "Déconnecté du broker MQTT");
+            break;
+        case MQTT_EVENT_SUBSCRIBED:
+            ESP_LOGI(TAG, "Abonnement réussi à un sujet MQTT");
+            break;
+        case MQTT_EVENT_PUBLISHED:
+            ESP_LOGI(TAG, "Message MQTT publié avec succès");
+            break;
+        case MQTT_EVENT_DATA:
+            ESP_LOGI(TAG, "Message MQTT reçu");
+            mqtt_process_received_data(event->topic, event->topic_len, event->data, event->data_len);
+            break;
+        default:
+            break;
+    }
+
     return ESP_OK;
 }
 
@@ -114,8 +143,9 @@ void mqtt_app_start(void)
     ESP_LOGI(TAG, "Fonction mqtt_app_start terminée");
 }
 
-void mqtt_publish_message(const char *topic, const char *message)
-{
-    esp_mqtt_client_publish(client, topic, message, 0, 1, 0);
-    ESP_LOGI(TAG, "Message publié sur le topic %s : %s", topic, message);
+void mqtt_task(void *pvParameters) {
+    mqtt_app_start();
+    while (1) {
+        vTaskDelay(333 / portTICK_PERIOD_MS);
+    }
 }

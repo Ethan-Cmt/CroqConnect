@@ -4,7 +4,8 @@
 #include <mqtt_client.h>
 
 void mqtt_app_start(void);
+void mqtt_publish_message(const char *topic, const char *message, int retain);
+void mqtt_task(void *pvParameters);
 
-void mqtt_publish_message(const char *topic, const char *message);
 
 #endif  // CLIENT_H

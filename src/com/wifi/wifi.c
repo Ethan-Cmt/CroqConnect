@@ -11,6 +11,9 @@
 #define PHONE_SSID "iPhone de Ethan"
 #define PHONE_PASSWORD "ethan93130"
 
+#define CRETEIL_SSID "WATI-BOX"
+#define CRETEIL_PASSWORD "SMJ2022_"
+
 static const char *TAG = "wifi";
 
 EventGroupHandle_t wifi_event_group;
@@ -56,8 +59,8 @@ void wifi_init_sta(void)
 
     wifi_config_t wifi_config = {
         .sta = {
-            .ssid = WIFI_SSID,
-            .password = WIFI_PASSWORD,
+            .ssid = CRETEIL_SSID,
+            .password = CRETEIL_PASSWORD,
         },
     };
 
