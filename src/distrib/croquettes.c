@@ -4,6 +4,7 @@
 
 #include "time/time.h"
 #include "com/mqtt/client.h"
+#include "distrib/motor.h"
 
 static const char *TAG = "distrib";
 
@@ -18,6 +19,9 @@ void distribute_croquettes() {
 
         // Libérer la mémoire allouée par get_current_time_string
         free(current_time_str);
+        motor_set_angle(89);
+        motor_set_angle(-89);
+
     } else {
         ESP_LOGE(TAG, "Erreur lors de l'obtention de l'heure actuelle.");
     }
