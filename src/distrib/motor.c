@@ -4,7 +4,7 @@
 #include "driver/mcpwm_prelude.h"
 
 static const char *TAG = "servo";
-#define MOTOR_PULSE_GPIO  4
+#define MOTOR_PULSE_GPIO  48
 #define MOTOR_MIN_PULSEWIDTH_US 500
 #define MOTOR_MAX_PULSEWIDTH_US 2500
 #define MOTOR_MIN_DEGREE  -90

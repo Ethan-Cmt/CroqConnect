@@ -123,7 +123,7 @@ void mqtt_app_start(void)
             .stack_size = 4096, // MQTT task stack size
         },
         .buffer = {
-            .size = 512, // Size of MQTT send/receive buffer
+            .size = 2048, // Size of MQTT send/receive buffer
             .out_size = 0, // Size of MQTT output buffer, defaults to the size defined by buffer_size
         },
         .outbox = {
@@ -148,4 +148,9 @@ void mqtt_task(void *pvParameters) {
     while (1) {
         vTaskDelay(333 / portTICK_PERIOD_MS);
     }
+}
+
+void send_image_data(uint8_t *image_data, size_t image_size)
+{
+    esp_mqtt_client_publish(client, "image", (char *)image_data, image_size, 1, 0);
 }

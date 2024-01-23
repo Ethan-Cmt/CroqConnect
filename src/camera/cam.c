@@ -3,10 +3,11 @@
 #include <nvs_flash.h>
 #include <sys/param.h>
 #include <string.h>
-
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_camera.h"
+
+#include "com/mqtt/client.h"
 
 #ifndef portTICK_RATE_MS
 #define portTICK_RATE_MS portTICK_PERIOD_MS
@@ -61,7 +62,7 @@ static camera_config_t camera_config = {
     .frame_size = FRAMESIZE_VGA,    //QQVGA-UXGA, For ESP32, do not use sizes above QVGA when not JPEG. The performance of the ESP32-S series has improved a lot, but JPEG mode always gives better frame rates.
 
     .fb_location = CAMERA_FB_IN_DRAM,
-    .jpeg_quality = 12, //0-63, for OV series camera sensors, lower number means higher quality
+    .jpeg_quality = 15, //0-63, for OV series camera sensors, lower number means higher quality
     .fb_count = 1,       //When jpeg mode is used, if fb_count more than one, the driver will work in continuous mode.
     .grab_mode = CAMERA_GRAB_WHEN_EMPTY,
 };
@@ -71,5 +72,24 @@ void init_camera() {
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "Camera initialization failed with error 0x%x", err);
         vTaskDelay(portMAX_DELAY);
+    }
+}
+
+void image_to_mqtt(void *pvParameters)
+{
+    while (1) {
+        camera_fb_t *fb = esp_camera_fb_get();
+        if (fb) {
+            if (fb->buf) {
+                ESP_LOGI(TAG, "Envoi de l'image via MQTT...");
+                send_image_data(fb->buf, fb->len);
+            } else {
+                ESP_LOGE(TAG, "Framebuffer data is NULL");
+            }
+            esp_camera_fb_return(fb);
+        } else {
+            ESP_LOGE(TAG, "Camera capture failed");
+        }
+        vTaskDelay(10000 / portTICK_RATE_MS);
     }
 }

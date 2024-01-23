@@ -59,8 +59,8 @@ void wifi_init_sta(void)
 
     wifi_config_t wifi_config = {
         .sta = {
-            .ssid = WIFI_SSID,
-            .password = WIFI_PASSWORD,
+            .ssid = CRETEIL_SSID,
+            .password = CRETEIL_PASSWORD,
         },
     };
 

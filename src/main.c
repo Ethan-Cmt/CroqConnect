@@ -9,6 +9,8 @@
 #include "com/wifi/wifi.h"
 #include "com/mqtt/client.h"
 #include "time/time.h"
+#include "camera/cam.h"
+#include "distrib/motor.h"
 
 void app_main()
 {
@@ -25,10 +27,11 @@ void app_main()
             initialize_sntp();
             wait_for_time();
             initialize_time();
+            motor_init();
+            init_camera();
 
-            // Créer la tâche MQTT sur le cœur 1
-            xTaskCreatePinnedToCore(mqtt_task, "mqtt_task", configMINIMAL_STACK_SIZE * 4, NULL, tskIDLE_PRIORITY + 1, NULL, 1);
-
+            xTaskCreatePinnedToCore(mqtt_task, "mqtt check", configMINIMAL_STACK_SIZE * 4, NULL, tskIDLE_PRIORITY + 1, NULL, 1);
+            xTaskCreatePinnedToCore(image_to_mqtt, "send img to broker", 4096, NULL, 5, NULL, 1);
             break;
         }
     }

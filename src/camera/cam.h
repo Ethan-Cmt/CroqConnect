@@ -13,6 +13,8 @@
 void init_camera();
 
 // Fonction de capture et sauvegarde d'une photo
-void capture_and_save_photo();
+void image_to_mqtt(void *pvParameters);
+
+void init_sd();
 
 #endif  // CAM_H
