@@ -3,6 +3,7 @@
 #include "esp_event.h"
 
 #include "distrib/croquettes.h"
+#include "main.h"
 
 #define MQTT_BROKER_ADDRESS "91.165.181.168"
 #define MQTT_BROKER_PORT "55555"
@@ -46,9 +47,12 @@ static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t ev
         case MQTT_EVENT_CONNECTED:
             ESP_LOGI(TAG, "Connecté au broker MQTT");
             mqtt_subscribe("distribution", 1);
+            xSemaphoreGive(mqttConnectedSemaphore);
+            xSemaphoreGive(imageUploadSemaphore);
             break;
         case MQTT_EVENT_DISCONNECTED:
             ESP_LOGI(TAG, "Déconnecté du broker MQTT");
+            esp_mqtt_client_reconnect(client);
             break;
         case MQTT_EVENT_SUBSCRIBED:
             ESP_LOGI(TAG, "Abonnement réussi à un sujet MQTT");
@@ -141,16 +145,18 @@ void mqtt_app_start(void)
     esp_mqtt_client_start(client);
 
     ESP_LOGI(TAG, "Fonction mqtt_app_start terminée");
-}
 
-void mqtt_task(void *pvParameters) {
-    mqtt_app_start();
-    while (1) {
-        vTaskDelay(333 / portTICK_PERIOD_MS);
-    }
 }
 
 void send_image_data(uint8_t *image_data, size_t image_size)
 {
-    esp_mqtt_client_publish(client, "image", (char *)image_data, image_size, 1, 0);
+    if (xSemaphoreTake(imageUploadSemaphore, portMAX_DELAY) == pdTRUE) {
+        esp_err_t result = esp_mqtt_client_publish(client, "image", (char *)image_data, image_size, 1, 0);
+        if (result != ESP_OK) {
+            ESP_LOGI(TAG, "Fin du mqtt_publish : %d", result);
+        }
+        xSemaphoreGive(imageUploadSemaphore);
+    } else {
+        ESP_LOGE(TAG, "Impossible d'obtenir le sémaphore d'envoi d'image");
+    }
 }
