@@ -86,10 +86,10 @@ void mqtt_app_start(void)
         },
         .credentials = {
             .username = NULL, // MQTT username
-            .client_id = NULL, // MQTT client identifier, set to NULL for default client id
+            .client_id = "ethan", // MQTT client identifier, set to NULL for default client id
             .set_null_client_id = false, // Selects a NULL client id
             .authentication = {
-                .password = NULL, // MQTT password
+                .password = "pswrd", // MQTT password
                 .certificate = NULL, // Certificate for SSL mutual authentication
                 .certificate_len = 0, // Length of the buffer pointed to by certificate
                 .key = NULL, // Private key for SSL mutual authentication
