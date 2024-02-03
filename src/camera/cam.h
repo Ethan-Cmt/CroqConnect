@@ -6,13 +6,12 @@
 #include <freertos/task.h>
 #include <esp_camera.h>
 
-// Définissez le tag pour les logs
-#define TAG "CAMERA_APP"
-
 // Fonction d'initialisation de la caméra
 void init_camera();
 
 // Fonction de capture et sauvegarde d'une photo
 void image_to_mqtt(void *pvParameters);
+
+void controlImgCaptureTask(bool enable);
 
 #endif  // CAM_H

@@ -36,6 +36,12 @@
 #define HREF_GPIO_NUM 7
 #define PCLK_GPIO_NUM 13
 
+// Handle de la tâche
+static TaskHandle_t imgCaptureTaskHandle = NULL;
+
+// Variable globale pour contrôler l'état de la tâche
+static bool imgCaptureTaskEnabled = false;
+
 static camera_config_t camera_config = {
     .pin_pwdn = PWDN_GPIO_NUM,
     .pin_reset = RESET_GPIO_NUM,
@@ -107,5 +113,24 @@ void image_to_mqtt(void *pvParameters) {
             ESP_LOGE(TAG, "Camera capture failed");
         }
         vTaskDelay(50 / portTICK_RATE_MS);
+    }
+}
+
+void controlImgCaptureTask(bool enable) {
+    if (enable) {
+        if (!imgCaptureTaskEnabled) {
+            // Démarrer la tâche et stocker le handle
+            xTaskCreatePinnedToCore(image_to_mqtt, "send img to broker", 4096, NULL, 5, &imgCaptureTaskHandle, 1);
+            imgCaptureTaskEnabled = true;
+        }
+    } else {
+        if (imgCaptureTaskEnabled) {
+            // Arrêter la tâche si elle est en cours d'exécution
+            if (imgCaptureTaskHandle != NULL) {
+                vTaskDelete(imgCaptureTaskHandle);
+                imgCaptureTaskHandle = NULL;
+            }
+            imgCaptureTaskEnabled = false;
+        }
     }
 }

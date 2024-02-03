@@ -3,6 +3,7 @@
 #include "esp_event.h"
 
 #include "distrib/croquettes.h"
+#include "camera/cam.h"
 #include "main.h"
 
 #define MQTT_BROKER_ADDRESS "91.165.181.168"
@@ -18,6 +19,15 @@ void mqtt_process_received_data(const char *topic, int topic_len, const char *da
     // Vérifier si le message est reçu sur le topic 'distribution'
     if (strncmp(topic, "distribution", topic_len) == 0) {
         distribute_croquettes();
+    }
+    // Vérifier si le message est reçu sur le topic 'tasks/img_capture'
+    if (strncmp(topic, "tasks/img_capture", topic_len) == 0) {
+        // Démarrer ou arrêter la tâche en fonction de la valeur du message
+        if (strncmp(data, "on", data_len) == 0) {
+            controlImgCaptureTask(true);
+        } else if (strncmp(data, "off", data_len) == 0) {
+            controlImgCaptureTask(false);
+        }
     }
 }
 
@@ -47,6 +57,7 @@ static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t ev
         case MQTT_EVENT_CONNECTED:
             ESP_LOGI(TAG, "Connecté au broker MQTT");
             mqtt_subscribe("distribution", 1);
+            mqtt_subscribe("tasks/img_capture", 1);
             xSemaphoreGive(mqttConnectedSemaphore);
             xSemaphoreGive(imageUploadSemaphore);
             break;

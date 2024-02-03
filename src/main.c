@@ -13,6 +13,8 @@
 #include "camera/cam.h"
 #include "distrib/motor.h"
 
+#define TAG "MAIN"
+
 SemaphoreHandle_t mqttConnectedSemaphore;
 SemaphoreHandle_t imageUploadSemaphore;
 
@@ -47,7 +49,7 @@ void app_main()
             mqtt_app_start();
 
             //xTaskCreatePinnedToCore(mqtt_task, "mqtt check", configMINIMAL_STACK_SIZE * 4, NULL, tskIDLE_PRIORITY + 1, NULL, 1);
-            xTaskCreatePinnedToCore(image_to_mqtt, "send img to broker", 4096, NULL, 5, NULL, 1);
+            //xTaskCreatePinnedToCore(image_to_mqtt, "send img to broker", 4096, NULL, 5, NULL, 1);
             break;
         }
     }
