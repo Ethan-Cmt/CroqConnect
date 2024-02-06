@@ -12,6 +12,7 @@
 #include "time/time.h"
 #include "camera/cam.h"
 #include "distrib/motor.h"
+#include "quantity/hx711.h"
 
 #define TAG "MAIN"
 
@@ -20,6 +21,27 @@ SemaphoreHandle_t imageUploadSemaphore;
 
 void app_main()
 {
+    esp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
+
+    DistributionSchedule schedule = {
+        .hour_1 = DISTRIBUTION_HOUR_1,
+        .minute_1 = DISTRIBUTION_MINUTE_1,
+        .hour_2 = DISTRIBUTION_HOUR_2,
+        .minute_2 = DISTRIBUTION_MINUTE_2,
+        .hour_3 = DISTRIBUTION_HOUR_3,
+        .minute_3 = DISTRIBUTION_MINUTE_3,
+    };
+
+    esp_err_t write_ret = write_distribution_schedule(&schedule);
+    if (write_ret != ESP_OK) {
+        ESP_LOGE(TAG, "Erreur lors de l'écriture des horaires dans la mémoire flash");
+    }
+
     mqttConnectedSemaphore = xSemaphoreCreateBinary();
     if (mqttConnectedSemaphore == NULL) {
         ESP_LOGE(TAG, "Impossible de créer le sémaphore de connexion MQTT");
@@ -48,8 +70,10 @@ void app_main()
             init_camera();
             mqtt_app_start();
 
+            //xTaskCreate(test, "test", configMINIMAL_STACK_SIZE * 5, NULL, 5, NULL);
             //xTaskCreatePinnedToCore(mqtt_task, "mqtt check", configMINIMAL_STACK_SIZE * 4, NULL, tskIDLE_PRIORITY + 1, NULL, 1);
             //xTaskCreatePinnedToCore(image_to_mqtt, "send img to broker", 4096, NULL, 5, NULL, 1);
+            initialize_periodic_task();
             break;
         }
     }
