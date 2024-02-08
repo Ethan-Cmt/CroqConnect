@@ -3,13 +3,6 @@
 
 #include "esp_system.h"
 
-#define DISTRIBUTION_HOUR_1 14
-#define DISTRIBUTION_MINUTE_1 46
-#define DISTRIBUTION_HOUR_2 13
-#define DISTRIBUTION_MINUTE_2 50
-#define DISTRIBUTION_HOUR_3 20
-#define DISTRIBUTION_MINUTE_3 30
-
 // Structure pour stocker les horaires de distribution
 typedef struct {
     int hour_1;
@@ -18,6 +11,12 @@ typedef struct {
     int minute_2;
     int hour_3;
     int minute_3;
+    int hour_4;
+    int minute_4;
+    int hour_5;
+    int minute_5;
+    int hour_6;
+    int minute_6;
 } DistributionSchedule;
 
 // Fonction pour écrire les horaires dans la mémoire flash
@@ -39,5 +38,12 @@ void periodic_task_callback(void *arg);
 void initialize_periodic_task();
 
 char *get_current_time_string();
+
+void update_schedule_from_json(const char *json_string);
+
+char *get_schedule_json();
+
+char *get_timer_string();
+
 
 #endif  // TIME_H

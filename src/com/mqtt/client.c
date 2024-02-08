@@ -1,9 +1,13 @@
 #include <mqtt_client.h>
 #include "esp_log.h"
 #include "esp_event.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 #include "distrib/croquettes.h"
 #include "camera/cam.h"
+#include "time/time.h"
 #include "main.h"
 
 #define MQTT_BROKER_ADDRESS "91.165.181.168"
@@ -28,6 +32,11 @@ void mqtt_process_received_data(const char *topic, int topic_len, const char *da
         } else if (strncmp(data, "off", data_len) == 0) {
             controlImgCaptureTask(false);
         }
+    }
+        // Vérifier si le message est reçu sur le topic 'timer/Settings'
+    if (strncmp(topic, "timer/Settings", topic_len) == 0) {
+        // Mettre à jour les horaires à partir de la chaîne JSON reçue
+        update_schedule_from_json(data);
     }
 }
 
@@ -58,6 +67,7 @@ static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t ev
             ESP_LOGI(TAG, "Connecté au broker MQTT");
             mqtt_subscribe("distribution", 1);
             mqtt_subscribe("tasks/img_capture", 1);
+            mqtt_subscribe("timer/Settings", 1);
             xSemaphoreGive(mqttConnectedSemaphore);
             xSemaphoreGive(imageUploadSemaphore);
             break;
@@ -170,4 +180,9 @@ void send_image_data(uint8_t *image_data, size_t image_size)
     } else {
         ESP_LOGE(TAG, "Impossible d'obtenir le sémaphore d'envoi d'image");
     }
+}
+
+void send_schedule_to_mqtt() {
+    char *schedule_string = get_schedule_json();
+    esp_mqtt_client_publish(client, "timer/Current", schedule_string, 0, 1, 0);
 }

@@ -28,20 +28,6 @@ void app_main()
     }
     ESP_ERROR_CHECK(ret);
 
-    DistributionSchedule schedule = {
-        .hour_1 = DISTRIBUTION_HOUR_1,
-        .minute_1 = DISTRIBUTION_MINUTE_1,
-        .hour_2 = DISTRIBUTION_HOUR_2,
-        .minute_2 = DISTRIBUTION_MINUTE_2,
-        .hour_3 = DISTRIBUTION_HOUR_3,
-        .minute_3 = DISTRIBUTION_MINUTE_3,
-    };
-
-    esp_err_t write_ret = write_distribution_schedule(&schedule);
-    if (write_ret != ESP_OK) {
-        ESP_LOGE(TAG, "Erreur lors de l'écriture des horaires dans la mémoire flash");
-    }
-
     mqttConnectedSemaphore = xSemaphoreCreateBinary();
     if (mqttConnectedSemaphore == NULL) {
         ESP_LOGE(TAG, "Impossible de créer le sémaphore de connexion MQTT");

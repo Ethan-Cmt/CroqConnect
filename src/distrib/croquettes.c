@@ -9,7 +9,9 @@
 static const char *TAG = "distrib";
 
 void distribute_croquettes() {
+    ESP_LOGI(TAG, "Distribution en cours...");
     char* current_time_str = get_current_time_string();
+    motor_set_angle(89);
 
     if (current_time_str != NULL) {
         char message[100];
@@ -19,10 +21,8 @@ void distribute_croquettes() {
 
         // Libérer la mémoire allouée par get_current_time_string
         free(current_time_str);
-        motor_set_angle(89);
-        motor_set_angle(-89);
-
     } else {
         ESP_LOGE(TAG, "Erreur lors de l'obtention de l'heure actuelle.");
     }
+    ESP_LOGI(TAG, "Distribution terminée."); //Ajouter verif HX711
 }

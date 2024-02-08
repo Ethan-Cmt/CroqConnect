@@ -7,7 +7,7 @@ void mqtt_app_start(void);
 void mqtt_publish_message(const char *topic, const char *message, int retain);
 void mqtt_task(void *pvParameters);
 void send_image_data(uint8_t *image_data, size_t image_size);
-
+void send_schedule_to_mqtt();
 
 
 #endif  // CLIENT_H
