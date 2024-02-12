@@ -128,7 +128,7 @@ void check_and_distribute_croquettes(const DistributionSchedule *schedule) {
     }
 }
 
-void periodic_task_callback(void *arg) {
+void distrib_time_check_callback(void *arg) {
     DistributionSchedule schedule;
 
     // Lire les horaires depuis la mémoire flash
@@ -140,11 +140,11 @@ void periodic_task_callback(void *arg) {
     }
 }
 
-void initialize_periodic_task() {
+void periodic_time_check() {
     const esp_timer_create_args_t periodic_timer_args = {
-        .callback = &periodic_task_callback,
+        .callback = &distrib_time_check_callback,
         .arg = NULL,
-        .name = "periodic_task"
+        .name = "distrib_time_check"
     };
     esp_timer_handle_t periodic_timer;
     esp_timer_create(&periodic_timer_args, &periodic_timer);

@@ -14,6 +14,7 @@
 #ifndef portTICK_RATE_MS
 #define portTICK_RATE_MS portTICK_PERIOD_MS
 #endif
+#include <esp_timer.h>
 
 #define TAG "CAMERA_APP"
 
@@ -70,7 +71,7 @@ static camera_config_t camera_config = {
     .frame_size = FRAMESIZE_QVGA,    //QQVGA-UXGA, For ESP32, do not use sizes above QVGA when not JPEG. The performance of the ESP32-S series has improved a lot, but JPEG mode always gives better frame rates.
 
     .fb_location = CAMERA_FB_IN_DRAM,
-    .jpeg_quality = 50, //0-63, for OV series camera sensors, lower number means higher quality
+    .jpeg_quality = 25, //0-63, for OV series camera sensors, lower number means higher quality
     .fb_count = 1,       //When jpeg mode is used, if fb_count more than one, the driver will work in continuous mode.
     .grab_mode = CAMERA_GRAB_WHEN_EMPTY,
 };
@@ -83,37 +84,35 @@ void init_camera() {
     }
 }
 
-void image_to_mqtt(void *pvParameters) {
-    // Attendre que la connexion MQTT soit établie
-    if (xSemaphoreTake(mqttConnectedSemaphore, portMAX_DELAY) != pdTRUE) {
-        // Impossible d'obtenir le sémaphore, gérer l'erreur
-        ESP_LOGE(TAG, "Erreur lors de l'attente du sémaphore de connexion MQTT dans image_to_mqtt");
-        vTaskDelete(NULL);
-    }
+void image_to_mqtt() {
 
-    // Attendre que la sémaphore ImageUpload soit disponible
-    if (xSemaphoreTake(imageUploadSemaphore, portMAX_DELAY) != pdTRUE) {
-        // Impossible d'obtenir le sémaphore, gérer l'erreur
-        ESP_LOGE(TAG, "Erreur lors de l'attente du sémaphore ImageUpload dans image_to_mqtt");
-        vTaskDelete(NULL);
-    }
-    xSemaphoreGive(imageUploadSemaphore);
-
-    while (1) {
-        camera_fb_t *fb = esp_camera_fb_get();
-        if (fb) {
-            if (fb->buf) {
-                ESP_LOGI(TAG, "Envoi de l'image via MQTT...");
-                send_image_data(fb->buf, fb->len);
-            } else {
-                ESP_LOGE(TAG, "Framebuffer data is NULL");
-            }
-            esp_camera_fb_return(fb);
+    camera_fb_t *fb = esp_camera_fb_get();
+    if (fb) {
+        if (fb->buf) {
+            ESP_LOGI(TAG, "Envoi de l'image via MQTT...");
+            send_image_data(fb->buf, fb->len);
         } else {
-            ESP_LOGE(TAG, "Camera capture failed");
+            ESP_LOGE(TAG, "Framebuffer data is NULL");
         }
-        vTaskDelay(50 / portTICK_RATE_MS);
+        esp_camera_fb_return(fb);
+    } else {
+        ESP_LOGE(TAG, "Camera capture failed");
     }
+}
+
+void send_mqtt_frame_callback(void *arg) {
+    image_to_mqtt();
+}
+
+void send_mqtt_frame() {
+    const esp_timer_create_args_t mqtt_frame_args = {
+        .callback = &send_mqtt_frame_callback,
+        .arg = NULL,
+        .name = "image_to_mqtt"
+    };
+    esp_timer_handle_t periodic_frame_send;
+    esp_timer_create(&mqtt_frame_args, &periodic_frame_send);
+    esp_timer_start_periodic(periodic_frame_send, 0.25 * 1000 * 1000);
 }
 
 void controlImgCaptureTask(bool enable) {

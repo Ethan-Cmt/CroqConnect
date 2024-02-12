@@ -28,9 +28,9 @@ void mqtt_process_received_data(const char *topic, int topic_len, const char *da
     if (strncmp(topic, "tasks/img_capture", topic_len) == 0) {
         // Démarrer ou arrêter la tâche en fonction de la valeur du message
         if (strncmp(data, "on", data_len) == 0) {
-            controlImgCaptureTask(true);
+            send_mqtt_frame();
         } else if (strncmp(data, "off", data_len) == 0) {
-            controlImgCaptureTask(false);
+            //controlImgCaptureTask(false);
         }
     }
         // Vérifier si le message est reçu sur le topic 'timer/Settings'
@@ -172,7 +172,7 @@ void mqtt_app_start(void)
 void send_image_data(uint8_t *image_data, size_t image_size)
 {
     if (xSemaphoreTake(imageUploadSemaphore, portMAX_DELAY) == pdTRUE) {
-        esp_err_t result = esp_mqtt_client_publish(client, "image", (char *)image_data, image_size, 1, 0);
+        esp_err_t result = esp_mqtt_client_publish(client, "image", (char *)image_data, image_size, 0, 0);
         if (result != ESP_OK) {
             ESP_LOGI(TAG, "Fin du mqtt_publish : %d", result);
         }

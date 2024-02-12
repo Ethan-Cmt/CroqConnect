@@ -33,9 +33,9 @@ void initialize_time();
 
 void check_and_distribute_croquettes(const DistributionSchedule *schedule);
 
-void periodic_task_callback(void *arg);
+void distrib_time_check_callback(void *arg);
 
-void initialize_periodic_task();
+void periodic_time_check();
 
 char *get_current_time_string();
 
