@@ -18,7 +18,7 @@ set(HEAD_HASH)
 file(READ "/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/CMakeFiles/git-data/HEAD" HEAD_CONTENTS LIMIT 1024)
 
 string(STRIP "${HEAD_CONTENTS}" HEAD_CONTENTS)
-set(GIT_DIR "/home/ethan/esp/esp-idf/.git")
+set(GIT_DIR "/home/ethan/Documents/PlatformIO/Projects/CroqConnect/.git")
 # handle git-worktree
 if(EXISTS "${GIT_DIR}/commondir")
 	file(READ "${GIT_DIR}/commondir" GIT_DIR_NEW LIMIT 1024)

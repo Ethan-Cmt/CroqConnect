@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "CroqConnect",
-    "project_version":    "1",
+    "project_version":    "a1f52d7-dirty",
     "project_path":       "/home/ethan/Documents/PlatformIO/Projects/CroqConnect",
     "idf_path":           "/home/ethan/esp/esp-idf",
     "build_dir":          "/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build",
@@ -1060,7 +1060,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "/home/ethan/Documents/PlatformIO/Projects/CroqConnect/build/esp-idf/mqtt/libmqtt.a",
-            "sources": [ "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/mqtt_client.c", "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt_msg.c", "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt_outbox.c", "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/lib/platform_esp32_idf.c" ],
+            "sources": [ "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/mqtt_client.c", "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt_msg.c", "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt_outbox.c", "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/lib/platform_esp32_idf.c", "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/lib/mqtt5_msg.c", "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/mqtt5_client.c" ],
             "include_dirs": [ "/home/ethan/esp/esp-idf/components/mqtt/esp-mqtt/include" ]
         },
         "newlib": {

@@ -9,6 +9,7 @@
 
 extern bool ip_obtained;
 
+void wifi_init_softap(void);
 void wifi_init_sta(void);
 
 #endif  // WIFI_H
