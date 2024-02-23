@@ -144,7 +144,7 @@ void periodic_time_check() {
     const esp_timer_create_args_t periodic_timer_args = {
         .callback = &distrib_time_check_callback,
         .arg = NULL,
-        .name = "distrib_time_check"
+        .name = "check_dis_time"
     };
     esp_timer_handle_t periodic_timer;
     esp_timer_create(&periodic_timer_args, &periodic_timer);
@@ -300,4 +300,19 @@ void update_schedule_from_json(const char *json_string) {
         ESP_LOGE(TAG, "Erreur lors de la lecture des horaires depuis la mémoire flash : %s", esp_err_to_name(ret));
     }
     send_schedule_to_mqtt();
+}
+
+void send_schedule_callback(void *arg) {
+    send_schedule_to_mqtt();
+}
+
+void periodic_schedule_send() {
+    const esp_timer_create_args_t sched_sender_args = {
+        .callback = &send_schedule_callback,
+        .arg = NULL,
+        .name = "check_dis_time"
+    };
+    esp_timer_handle_t periodic_sched_sender;
+    esp_timer_create(&sched_sender_args, &periodic_sched_sender);
+    esp_timer_start_periodic(periodic_sched_sender, 10 * 1000 * 1000); // Toutes les 10 secs
 }

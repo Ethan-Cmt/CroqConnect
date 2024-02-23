@@ -71,7 +71,7 @@ static camera_config_t camera_config = {
     .frame_size = FRAMESIZE_QVGA,    //QQVGA-UXGA, For ESP32, do not use sizes above QVGA when not JPEG. The performance of the ESP32-S series has improved a lot, but JPEG mode always gives better frame rates.
 
     .fb_location = CAMERA_FB_IN_DRAM,
-    .jpeg_quality = 25, //0-63, for OV series camera sensors, lower number means higher quality
+    .jpeg_quality = 15, //0-63, for OV series camera sensors, lower number means higher quality
     .fb_count = 1,       //When jpeg mode is used, if fb_count more than one, the driver will work in continuous mode.
     .grab_mode = CAMERA_GRAB_WHEN_EMPTY,
 };
@@ -85,6 +85,11 @@ void init_camera() {
 }
 
 void image_to_mqtt() {
+    // Vérifier si la connexion MQTT est établie
+    if (!mqtt_connected) {
+        ESP_LOGE(TAG, "MQTT connection not established. Cannot send image.");
+        return;
+    }
 
     camera_fb_t *fb = esp_camera_fb_get();
     if (fb) {

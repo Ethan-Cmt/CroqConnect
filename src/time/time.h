@@ -45,5 +45,6 @@ char *get_schedule_json();
 
 char *get_timer_string();
 
+void periodic_schedule_send();
 
 #endif  // TIME_H

@@ -28,6 +28,8 @@ void app_main()
     }
     ESP_ERROR_CHECK(ret);
 
+    esp_log_level_set("*", ESP_LOG_DEBUG);
+
     mqttConnectedSemaphore = xSemaphoreCreateBinary();
     if (mqttConnectedSemaphore == NULL) {
         ESP_LOGE(TAG, "Impossible de créer le sémaphore de connexion MQTT");
@@ -40,11 +42,15 @@ void app_main()
         vTaskDelay(portMAX_DELAY);
     }
 
+
+    motor_init();
+    init_camera();
+
     ESP_ERROR_CHECK(nvs_flash_init());
     wifi_init_sta();
 
     // Attendre jusqu'à ce que l'adresse IP soit obtenue (timeout de 10 secondes)
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 300; i++)
     {
         vTaskDelay(pdMS_TO_TICKS(100));
         if (ip_obtained)
@@ -52,14 +58,18 @@ void app_main()
             initialize_sntp();
             wait_for_time();
             initialize_time();
-            motor_init();
-            init_camera();
             mqtt_app_start();
 
             //xTaskCreate(test, "test", configMINIMAL_STACK_SIZE * 5, NULL, 5, NULL);
-            //xTaskCreatePinnedToCore(mqtt_task, "mqtt check", configMINIMAL_STACK_SIZE * 4, NULL, tskIDLE_PRIORITY + 1, NULL, 1);
-            //xTaskCreatePinnedToCore(image_to_mqtt, "send img to broker", 4096, NULL, 5, NULL, 1);
-            //periodic_time_check();
+            periodic_time_check();
+            while (1) {
+                if (mqtt_connected) {
+                    send_mqtt_frame();
+                    periodic_schedule_send();
+                    break;
+                }
+                vTaskDelay(pdMS_TO_TICKS(250));
+            }
             break;
         }
     }

@@ -12,8 +12,13 @@
 
 #define MQTT_BROKER_ADDRESS "91.165.181.168"
 #define MQTT_BROKER_PORT "55555"
+#define MQTT_TESTER_ADRESS "test.mosquitto.org"
+#define MQTT_TESTER_PORT "1883"
+
 
 static const char *TAG = "mqtt";
+
+bool mqtt_connected = false;
 
 static esp_mqtt_client_handle_t client;
 
@@ -28,7 +33,7 @@ void mqtt_process_received_data(const char *topic, int topic_len, const char *da
     if (strncmp(topic, "tasks/img_capture", topic_len) == 0) {
         // Démarrer ou arrêter la tâche en fonction de la valeur du message
         if (strncmp(data, "on", data_len) == 0) {
-            send_mqtt_frame();
+            //send_mqtt_frame();
         } else if (strncmp(data, "off", data_len) == 0) {
             //controlImgCaptureTask(false);
         }
@@ -65,6 +70,7 @@ static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t ev
     switch (event_id) {
         case MQTT_EVENT_CONNECTED:
             ESP_LOGI(TAG, "Connecté au broker MQTT");
+            mqtt_connected = true;
             mqtt_subscribe("distribution", 1);
             mqtt_subscribe("tasks/img_capture", 1);
             mqtt_subscribe("timer/Settings", 1);
@@ -73,6 +79,8 @@ static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t ev
             break;
         case MQTT_EVENT_DISCONNECTED:
             ESP_LOGI(TAG, "Déconnecté du broker MQTT");
+            mqtt_connected = false;
+            vTaskDelay(pdMS_TO_TICKS(2500));
             esp_mqtt_client_reconnect(client);
             break;
         case MQTT_EVENT_SUBSCRIBED:

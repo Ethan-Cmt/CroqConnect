@@ -13,7 +13,7 @@ void distribute_croquettes() {
     ESP_LOGI(TAG, "Distribution en cours...");
     char* current_time_str = get_current_time_string();
     motor_set_angle(89);
-    image_to_mqtt();
+    //image_to_mqtt();
 
     if (current_time_str != NULL) {
         char message[100];
