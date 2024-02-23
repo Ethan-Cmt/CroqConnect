@@ -153,13 +153,40 @@ void scan_wifi_networks() {
 
     ESP_ERROR_CHECK(esp_wifi_scan_get_ap_records(&ap_num, ap_records));
 
+    int num_wifi_results_before_filtering = 0;
+
     for (int i = 0; i < ap_num && i < MAX_WIFI_RESULTS; i++) {
-        strncpy(wifi_results[i].ssid, (const char*)ap_records[i].ssid, sizeof(wifi_results[i].ssid));
-        wifi_results[i].rssi = ap_records[i].rssi;
-        ESP_LOGI(TAG, "WiFi Network: SSID=%s, RSSI=%d", wifi_results[i].ssid, wifi_results[i].rssi);
+        // Convertir le SSID en une chaîne C pour une manipulation plus facile
+        char ssid_str[sizeof(ap_records[i].ssid) + 1];
+        memcpy(ssid_str, ap_records[i].ssid, sizeof(ap_records[i].ssid));
+        ssid_str[sizeof(ap_records[i].ssid)] = '\0';
+
+        // Filtrer les caractères spéciaux du SSID
+        char sanitized_ssid[sizeof(ap_records[i].ssid) + 1];
+        size_t j = 0;
+        for (size_t k = 0; k < sizeof(ap_records[i].ssid); k++) {
+            // Exemple : ignorer les caractères ayant une valeur ASCII inférieure à 32 ou supérieure à 126
+            if (ssid_str[k] >= 32 && ssid_str[k] <= 126) {
+                sanitized_ssid[j++] = ssid_str[k];
+            }
+        }
+        sanitized_ssid[j] = '\0';
+
+        // Vérifier la longueur du SSID après le filtrage
+        if (strlen(sanitized_ssid) > 31) {
+            // Ignorer les réseaux avec des SSID de plus de 31 caractères
+            continue;
+        }
+
+        // Utiliser sanitized_ssid à la place du SSID brut
+        strncpy(wifi_results[num_wifi_results_before_filtering].ssid, sanitized_ssid, sizeof(wifi_results[num_wifi_results_before_filtering].ssid));
+        wifi_results[num_wifi_results_before_filtering].rssi = ap_records[i].rssi;
+        ESP_LOGI(TAG, "WiFi Network: SSID=%s, RSSI=%d", wifi_results[num_wifi_results_before_filtering].ssid, wifi_results[num_wifi_results_before_filtering].rssi);
+        
+        num_wifi_results_before_filtering++;
     }
 
-    num_wifi_results = ap_num;
+    num_wifi_results = num_wifi_results_before_filtering;
 
     free(ap_records);
 
@@ -170,7 +197,9 @@ esp_err_t main_wifi_cred_get_handler(httpd_req_t *req) {
     char buffer[1024];
     int total_len = 0;
 
-    total_len += snprintf(buffer + total_len, sizeof(buffer) - total_len, "<html><head><style>"
+    total_len += snprintf(buffer + total_len, sizeof(buffer) - total_len, "<!DOCTYPE html><html><head>"
+                        "<meta charset=\"UTF-8\">"
+                        "<style>"
                         "body { font-size: 20px; }"
                         "ul { list-style-type: none; padding: 0; }"
                         "li { margin-bottom: 10px; cursor: pointer; }"
@@ -195,6 +224,8 @@ esp_err_t main_wifi_cred_get_handler(httpd_req_t *req) {
                           "<input type=\"submit\" value=\"Connecter\">"
                           "</form></body></html>");
 
+
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
     httpd_resp_set_type(req, "text/html");
     httpd_resp_send(req, buffer, total_len);
 
