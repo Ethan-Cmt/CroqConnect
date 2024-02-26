@@ -88,6 +88,7 @@ void image_to_mqtt() {
     // Vérifier si la connexion MQTT est établie
     if (!mqtt_connected) {
         ESP_LOGE(TAG, "MQTT connection not established. Cannot send image.");
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
         return;
     }
 
