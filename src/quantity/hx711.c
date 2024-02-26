@@ -6,8 +6,8 @@
 //#include "ets_sys.h"
 #include "hx711.h"
 
-#define CONFIG_EXAMPLE_DOUT_GPIO  47  // GPIO14 (IO14) pour DOUT
-#define CONFIG_EXAMPLE_PD_SCK_GPIO 45  // GPIO15 (IO15) pour PD_SCK
+#define CONFIG_EXAMPLE_DOUT_GPIO  47  // GPIO47 (IO14) pour DOUT
+#define CONFIG_EXAMPLE_PD_SCK_GPIO 45  // GPIO45 (IO15) pour PD_SCK
 #define CONFIG_EXAMPLE_AVG_TIMES 10  // Remplacez par le nombre de lectures moyennes souhaité
 
 #define CHECK(x) do { esp_err_t __; if ((__ = x) != ESP_OK) { \
@@ -16,19 +16,15 @@
 #define CHECK_ARG(VAL) do { if (!(VAL)) { \
     ESP_LOGE(TAG, "Invalid argument at line %d", __LINE__); return ESP_ERR_INVALID_ARG; } } while (0)
 
-#if HELPER_TARGET_IS_ESP32
 static portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
-#endif
 
 static const char *TAG = "hx711-example";
 
+int32_t tare_del;
+
 static uint32_t read_raw(gpio_num_t dout, gpio_num_t pd_sck, hx711_gain_t gain)
 {
-#if HELPER_TARGET_IS_ESP32
     portENTER_CRITICAL(&mux);
-#elif HELPER_TARGET_IS_ESP8266
-    portENTER_CRITICAL();
-#endif
 
     // read data
     uint32_t data = 0;
@@ -50,11 +46,7 @@ static uint32_t read_raw(gpio_num_t dout, gpio_num_t pd_sck, hx711_gain_t gain)
         esp_rom_delay_us(1);
     }
 
-#if HELPER_TARGET_IS_ESP32
     portEXIT_CRITICAL(&mux);
-#elif HELPER_TARGET_IS_ESP8266
-    portEXIT_CRITICAL();
-#endif
 
     return data;
 }
@@ -138,7 +130,7 @@ esp_err_t hx711_read_data(hx711_t *dev, int32_t *data)
     return ESP_OK;
 }
 
-esp_err_t hx711_read_average(hx711_t *dev, size_t times, int32_t *data)
+int32_t hx711_read_average(hx711_t *dev, size_t times, int32_t *data)
 {
     CHECK_ARG(dev && times && data);
 
@@ -154,11 +146,11 @@ esp_err_t hx711_read_average(hx711_t *dev, size_t times, int32_t *data)
 
     ESP_LOGI(TAG, "HX711 average data: %" PRIi32, *data);
 
-    return ESP_OK;
+    return *data;
 }
 
-void test(void *pvParameters)
-{
+void tare(){
+    ESP_LOGI(TAG, "Taring...");
     hx711_t dev = {
         .dout = CONFIG_EXAMPLE_DOUT_GPIO,
         .pd_sck = CONFIG_EXAMPLE_PD_SCK_GPIO,
@@ -169,25 +161,34 @@ void test(void *pvParameters)
     ESP_ERROR_CHECK(hx711_init(&dev));
 
     // read from device
-    while (1)
+    esp_err_t r = hx711_wait(&dev, 500);
+    if (r != ESP_OK)
     {
-        esp_err_t r = hx711_wait(&dev, 500);
-        if (r != ESP_OK)
-        {
-            ESP_LOGE(TAG, "Device not found: %d (%s)\n", r, esp_err_to_name(r));
-            continue;
-        }
-
-        int32_t data;
-        r = hx711_read_average(&dev, CONFIG_EXAMPLE_AVG_TIMES, &data);
-        if (r != ESP_OK)
-        {
-            ESP_LOGE(TAG, "Could not read data: %d (%s)\n", r, esp_err_to_name(r));
-            continue;
-        }
-
-        ESP_LOGI(TAG, "Raw data: %" PRIi32, data);
-
-        vTaskDelay(pdMS_TO_TICKS(500));
+        ESP_LOGE(TAG, "Device not found: %d (%s)\n", r, esp_err_to_name(r));
     }
+
+    int32_t data;
+    tare_del = hx711_read_average(&dev, CONFIG_EXAMPLE_AVG_TIMES, &data);
+    ESP_LOGI(TAG, "Tare is: %" PRIi32, tare_del);
+    return;
+}
+
+void get_quantity(){
+    hx711_t dev = {
+        .dout = CONFIG_EXAMPLE_DOUT_GPIO,
+        .pd_sck = CONFIG_EXAMPLE_PD_SCK_GPIO,
+        .gain = HX711_GAIN_A_64
+    };
+
+    esp_err_t r = hx711_wait(&dev, 500);
+    if (r != ESP_OK)
+    {
+        ESP_LOGE(TAG, "Device not found: %d (%s)\n", r, esp_err_to_name(r));
+    }
+
+    int32_t data;
+    r = hx711_read_average(&dev, CONFIG_EXAMPLE_AVG_TIMES, &data);
+    int32_t quantity = r - tare_del;
+    ESP_LOGI(TAG, "Current quantity: %" PRIi32, quantity);
+    return;
 }

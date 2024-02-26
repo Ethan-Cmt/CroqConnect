@@ -132,9 +132,12 @@ esp_err_t hx711_read_data(hx711_t *dev, int32_t *data);
  * @param[out] data Average ADC data
  * @return `ESP_OK` on success
  */
-esp_err_t hx711_read_average(hx711_t *dev, size_t times, int32_t *data);
+int32_t hx711_read_average(hx711_t *dev, size_t times, int32_t *data);
 
-void test(void *pvParameters);
+extern int32_t tare_del;
+
+void tare();
+void get_quantity();
 
 #ifdef __cplusplus
 }

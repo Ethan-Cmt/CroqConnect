@@ -45,6 +45,7 @@ void app_main()
 
     motor_init();
     init_camera();
+    tare();
 
     ESP_ERROR_CHECK(nvs_flash_init());
     wifi_init_sta();
@@ -60,9 +61,8 @@ void app_main()
             initialize_time();
             mqtt_app_start();
 
-            //xTaskCreate(test, "test", configMINIMAL_STACK_SIZE * 5, NULL, 5, NULL);
             periodic_time_check();
-            while (1) {
+            while (1) { //permanently sending data
                 if (mqtt_connected) {
                     send_mqtt_frame();
                     periodic_schedule_send();
