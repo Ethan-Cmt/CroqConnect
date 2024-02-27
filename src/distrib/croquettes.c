@@ -9,11 +9,10 @@
 
 static const char *TAG = "distrib";
 
-void distribute_croquettes() {
-    ESP_LOGI(TAG, "Distribution en cours...");
+void distribute_croquettes() { // TODO : Add paramaeter 'portion' which corresponds to a precise quantity
+    ESP_LOGI(TAG, "Distribution...");
     char* current_time_str = get_current_time_string();
-    motor_set_angle(89);
-    //image_to_mqtt();
+    motor_set_angle(89); // May change
 
     if (current_time_str != NULL) {
         char message[100];
@@ -21,10 +20,9 @@ void distribute_croquettes() {
 
         mqtt_publish_message("distribution/last", message, 1);
 
-        // Libérer la mémoire allouée par get_current_time_string
         free(current_time_str);
     } else {
-        ESP_LOGE(TAG, "Erreur lors de l'obtention de l'heure actuelle.");
+        ESP_LOGE(TAG, "Erreur while trying to get current time");
     }
-    ESP_LOGI(TAG, "Distribution terminée."); //Ajouter verif HX711
+    ESP_LOGI(TAG, "Distribution done."); // TODO : Add HX711 diff check
 }

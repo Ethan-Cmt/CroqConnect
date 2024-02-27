@@ -24,13 +24,15 @@
 #define AP_SSID "Croq'Connect"
 #define AP_PASS "password!"
 
-#define MAX_WIFI_RESULTS 10
+#define MAX_WIFI_RESULTS 10 // Max number of proposed networks from scan
 
+// Wifi Scan data
 typedef struct {
     char ssid[32];
     int rssi;
-} wifi_info_t;
+} wifi_info_t; 
 
+// Wifi credentials data
 typedef struct {
     char ssid[32];
     char password[64];
@@ -42,7 +44,9 @@ int num_wifi_results = 0;
 static const char *TAG = "wifi";
 
 EventGroupHandle_t wifi_event_group;
-bool ip_obtained = false;
+
+// Constant for STA Mode
+bool ip_obtained = false; 
 static int reconnect_attempts = 0;
 #define MAX_RECONNECT_ATTEMPTS 30
 #define RECONNECT_INTERVAL_MS 1000
@@ -51,28 +55,29 @@ static esp_err_t wifi_event_handler(void *ctx, esp_event_base_t event_base, int3
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
         esp_wifi_connect();
     } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_CONNECTED) {
-        ESP_LOGI(TAG, "Connecté au réseau Wi-Fi");
-        reconnect_attempts = 0;  // Réinitialiser le compteur de tentatives de reconnexion
+        ESP_LOGI(TAG, "Connected to Wifi");
+        reconnect_attempts = 0;
     } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        ESP_LOGI(TAG, "Déconnecté du réseau Wi-Fi");
+        ESP_LOGI(TAG, "Disconnected from Wifi");
         if (reconnect_attempts < MAX_RECONNECT_ATTEMPTS) {
-            vTaskDelay(pdMS_TO_TICKS(RECONNECT_INTERVAL_MS));  // Attendre avant la prochaine tentative
+            vTaskDelay(pdMS_TO_TICKS(RECONNECT_INTERVAL_MS));
             esp_wifi_connect();
-            ESP_LOGI(TAG, "Tentative de reconnexion #%d", ++reconnect_attempts);
+            ESP_LOGI(TAG, "Trying to reconnect... #%d", ++reconnect_attempts);
         } else {
-            ESP_LOGE(TAG, "Échec de la reconnexion après %d tentatives", MAX_RECONNECT_ATTEMPTS);
-            reconnect_attempts = 0;  // Réinitialiser le compteur après avoir atteint le nombre maximal de tentatives
+            ESP_LOGE(TAG, "Wifi connection failed after %d attempts", MAX_RECONNECT_ATTEMPTS);
+            reconnect_attempts = 0;
             wifi_init_softap();
         }
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_obtained = true;
-        ESP_LOGI(TAG, "Adresse IP obtenue");
-        reconnect_attempts = 0;  // Réinitialiser le compteur après une connexion réussie
+        ESP_LOGI(TAG, "IP Adress obtained");
+        reconnect_attempts = 0;
     }
 
     return ESP_OK;
 }
 
+// Get Wifi Credentials saved in flash memory
 esp_err_t load_wifi_credentials(wifi_credentials_t *wifi_credentials) {
     nvs_handle_t nvs_handle;
     esp_err_t ret = nvs_open("wifi_data", NVS_READONLY, &nvs_handle);
@@ -84,24 +89,23 @@ esp_err_t load_wifi_credentials(wifi_credentials_t *wifi_credentials) {
     return ret;
 }
 
+// Save Wifi Credentials in flash memory
 esp_err_t save_wifi_credentials(const char *ssid, const char *password) {
     nvs_handle_t nvs_handle;
     esp_err_t ret = nvs_open("wifi_data", NVS_READWRITE, &nvs_handle);
 
     if (ret == ESP_OK) {
         wifi_credentials_t wifi_credentials;
-        memset(&wifi_credentials, 0, sizeof(wifi_credentials_t)); // Initialiser la structure avec des zéros
+        memset(&wifi_credentials, 0, sizeof(wifi_credentials_t)); // Init struct w/ 0s
 
-        // Copier les identifiants WiFi dans wifi_credentials
         strncpy(wifi_credentials.ssid, ssid, sizeof(wifi_credentials.ssid) - 1);
-        wifi_credentials.ssid[sizeof(wifi_credentials.ssid) - 1] = '\0';  // Ajouter le caractère null
+        wifi_credentials.ssid[sizeof(wifi_credentials.ssid) - 1] = '\0';  // Add NULL char
 
         strncpy(wifi_credentials.password, password, sizeof(wifi_credentials.password) - 1);
-        wifi_credentials.password[sizeof(wifi_credentials.password) - 1] = '\0';  // Ajouter le caractère null
+        wifi_credentials.password[sizeof(wifi_credentials.password) - 1] = '\0';  // Add NULL char
 
-        // Afficher les identifiants WiFi avant de les enregistrer en mémoire
-        ESP_LOGI(TAG, "SSID avant enregistrement en mémoire : %s", wifi_credentials.ssid);
-        ESP_LOGI(TAG, "Mot de passe avant enregistrement en mémoire : %s", wifi_credentials.password);
+        ESP_LOGI(TAG, "SSID before saving is %s", wifi_credentials.ssid);
+        ESP_LOGI(TAG, "PASSWORD before saving is %s", wifi_credentials.password);
 
         ret = nvs_set_blob(nvs_handle, "wifi_data", &wifi_credentials, sizeof(wifi_credentials));
         if (ret == ESP_OK) {
@@ -156,29 +160,26 @@ void scan_wifi_networks() {
     int num_wifi_results_before_filtering = 0;
 
     for (int i = 0; i < ap_num && i < MAX_WIFI_RESULTS; i++) {
-        // Convertir le SSID en une chaîne C pour une manipulation plus facile
         char ssid_str[sizeof(ap_records[i].ssid) + 1];
         memcpy(ssid_str, ap_records[i].ssid, sizeof(ap_records[i].ssid));
         ssid_str[sizeof(ap_records[i].ssid)] = '\0';
 
-        // Filtrer les caractères spéciaux du SSID
+        // Special char filter for html compatibilty
         char sanitized_ssid[sizeof(ap_records[i].ssid) + 1];
         size_t j = 0;
         for (size_t k = 0; k < sizeof(ap_records[i].ssid); k++) {
-            // Exemple : ignorer les caractères ayant une valeur ASCII inférieure à 32 ou supérieure à 126
+            // Ignores ASCII chars under 32 and over 126
             if (ssid_str[k] >= 32 && ssid_str[k] <= 126) {
                 sanitized_ssid[j++] = ssid_str[k];
             }
         }
         sanitized_ssid[j] = '\0';
 
-        // Vérifier la longueur du SSID après le filtrage
+        // SSID size check (No SSID over 31 chars)
         if (strlen(sanitized_ssid) > 31) {
-            // Ignorer les réseaux avec des SSID de plus de 31 caractères
             continue;
         }
 
-        // Utiliser sanitized_ssid à la place du SSID brut
         strncpy(wifi_results[num_wifi_results_before_filtering].ssid, sanitized_ssid, sizeof(wifi_results[num_wifi_results_before_filtering].ssid));
         wifi_results[num_wifi_results_before_filtering].rssi = ap_records[i].rssi;
         ESP_LOGI(TAG, "WiFi Network: SSID=%s, RSSI=%d", wifi_results[num_wifi_results_before_filtering].ssid, wifi_results[num_wifi_results_before_filtering].rssi);
@@ -193,6 +194,7 @@ void scan_wifi_networks() {
     ESP_LOGI(TAG, "Scan completed. Number of WiFi networks: %d", num_wifi_results);
 }
 
+// Get Wifi credentials HTTP Handler
 esp_err_t main_wifi_cred_get_handler(httpd_req_t *req) {
     char buffer[1024];
     int total_len = 0;
@@ -239,53 +241,47 @@ httpd_uri_t get_id_uri = {
     .user_ctx = NULL
 };
 
-// Fonction de gestionnaire pour le formulaire de connexion
+// Save Wifi credentials HTTP Handler
 esp_err_t connect_post_handler(httpd_req_t *req) {
     char ssid[32];
     char password[64];
 
-    // Taille maximale attendue des données POST
     #define MAX_POST_DATA_SIZE 128
     char post_data[MAX_POST_DATA_SIZE];
 
     // Récupérer les données POST sous forme de chaîne
     size_t post_data_len = httpd_req_recv(req, post_data, MAX_POST_DATA_SIZE);
     if (post_data_len <= 0) {
-        ESP_LOGE(TAG, "Erreur de réception des données POST");
+        ESP_LOGE(TAG, "Error while receiving POST data");
         return ESP_FAIL;
     }
 
-    // Terminer la chaîne avec le caractère null
     post_data[post_data_len] = '\0';
 
-    // Extraire les valeurs de SSID et du mot de passe du formulaire
+    // Extracting wifi credentials from Form
     if (httpd_query_key_value(post_data, "selected_ssid", ssid, sizeof(ssid)) != ESP_OK ||
         httpd_query_key_value(post_data, "password", password, sizeof(password)) != ESP_OK) {
-        ESP_LOGE(TAG, "Erreur lors de l'extraction des données POST");
+        ESP_LOGE(TAG, "Error while extracting POST data");
         return ESP_FAIL;
     }
 
-    // Ajouter des logs pour vérifier les données reçues
-    ESP_LOGI(TAG, "SSID reçu : %s", ssid);
-    ESP_LOGI(TAG, "Mot de passe reçu : %s", password);
+    ESP_LOGI(TAG, "Received SSID: %s", ssid);
+    ESP_LOGI(TAG, "Received Password : %s", password);
 
-    // Enregistrer les identifiants WiFi dans la mémoire flash
     esp_err_t ret = save_wifi_credentials(ssid, password);
     if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Erreur lors de l'enregistrement des identifiants WiFi dans la mémoire flash");
+        ESP_LOGE(TAG, "Error while saving Wifi credentials in flash memory");
         return ret;
     }
 
-    // Répondre au client
-    httpd_resp_send(req, "Enregistrement des identifiants wifi...", HTTPD_RESP_USE_STRLEN);
+    httpd_resp_send(req, "Saving Wifi Credentials in flash memory...", HTTPD_RESP_USE_STRLEN);
 
-    ESP_LOGI(TAG, "Redémarrage de l'ESP32 après l'enregistrement des identifiants WiFi");
+    ESP_LOGI(TAG, "Restarting ESP32...");
     esp_restart();
 
     return ESP_OK;
 }
 
-// Structure pour l'URI /connect
 httpd_uri_t connect_uri = {
     .uri = "/connect",
     .method = HTTP_POST,
@@ -348,7 +344,6 @@ void wifi_init_sta(void)
 
     wifi_credentials_t wifi_credentials;
 
-    // Charger les identifiants WiFi depuis la mémoire flash (NVS)
     if (load_wifi_credentials(&wifi_credentials) == ESP_OK) {
         wifi_config_t wifi_sta_config = {
             .sta = {
@@ -360,12 +355,11 @@ void wifi_init_sta(void)
         snprintf((char*)wifi_sta_config.sta.ssid, sizeof(wifi_sta_config.sta.ssid), "%s", wifi_credentials.ssid);
         snprintf((char*)wifi_sta_config.sta.password, sizeof(wifi_sta_config.sta.password), "%s", wifi_credentials.password);
 
-        // Assurer que les chaînes sont correctement terminées par un caractère nul
         wifi_sta_config.sta.ssid[sizeof(wifi_sta_config.sta.ssid) - 1] = '\0';
         wifi_sta_config.sta.password[sizeof(wifi_sta_config.sta.password) - 1] = '\0';
 
-        ESP_LOGI(TAG, "SSID récupéré depuis la mémoire : %s", wifi_sta_config.sta.ssid);
-        ESP_LOGI(TAG, "MDP récupéré depuis la mémoire : %s", wifi_sta_config.sta.password);
+        ESP_LOGI(TAG, "SSID from flash : %s", wifi_sta_config.sta.ssid);
+        ESP_LOGI(TAG, "password from flash : %s", wifi_sta_config.sta.password);
 
         ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
         ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_sta_config));

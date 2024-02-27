@@ -37,10 +37,8 @@
 #define HREF_GPIO_NUM 7
 #define PCLK_GPIO_NUM 13
 
-// Handle de la tâche
 static TaskHandle_t imgCaptureTaskHandle = NULL;
 
-// Variable globale pour contrôler l'état de la tâche
 static bool imgCaptureTaskEnabled = false;
 
 static camera_config_t camera_config = {
@@ -62,17 +60,16 @@ static camera_config_t camera_config = {
     .pin_href = HREF_GPIO_NUM,
     .pin_pclk = PCLK_GPIO_NUM,
 
-    //XCLK 20MHz or 10MHz for OV2640 double FPS (Experimental)
     .xclk_freq_hz = 20000000,
     .ledc_timer = LEDC_TIMER_0,
     .ledc_channel = LEDC_CHANNEL_0,
 
-    .pixel_format = PIXFORMAT_JPEG, //YUV422,GRAYSCALE,RGB565,JPEG
-    .frame_size = FRAMESIZE_QVGA,    //QQVGA-UXGA, For ESP32, do not use sizes above QVGA when not JPEG. The performance of the ESP32-S series has improved a lot, but JPEG mode always gives better frame rates.
+    .pixel_format = PIXFORMAT_JPEG, 
+    .frame_size = FRAMESIZE_QVGA,    // Do not use sizes above QVGA when not JPEG.
 
     .fb_location = CAMERA_FB_IN_DRAM,
-    .jpeg_quality = 15, //0-63, for OV series camera sensors, lower number means higher quality
-    .fb_count = 1,       //When jpeg mode is used, if fb_count more than one, the driver will work in continuous mode.
+    .jpeg_quality = 15, // 0-63, for OV series camera sensors, lower number means higher quality
+    .fb_count = 1,      // When jpeg mode is used, if fb_count more than one, the driver will work in continuous mode.
     .grab_mode = CAMERA_GRAB_WHEN_EMPTY,
 };
 
@@ -85,8 +82,7 @@ void init_camera() {
 }
 
 void image_to_mqtt() {
-    // Vérifier si la connexion MQTT est établie
-    if (!mqtt_connected) {
+    if (!mqtt_connected) { 
         ESP_LOGE(TAG, "MQTT connection not established. Cannot send image.");
         vTaskDelay(1000 / portTICK_PERIOD_MS);
         return;
@@ -95,7 +91,7 @@ void image_to_mqtt() {
     camera_fb_t *fb = esp_camera_fb_get();
     if (fb) {
         if (fb->buf) {
-            ESP_LOGI(TAG, "Envoi de l'image via MQTT...");
+            ESP_LOGI(TAG, "Sending image with MQTT...");
             send_image_data(fb->buf, fb->len);
         } else {
             ESP_LOGE(TAG, "Framebuffer data is NULL");
@@ -110,7 +106,8 @@ void send_mqtt_frame_callback(void *arg) {
     image_to_mqtt();
 }
 
-void send_mqtt_frame() {
+// Periodic image sending w/ MQTT
+void send_mqtt_frame() { 
     const esp_timer_create_args_t mqtt_frame_args = {
         .callback = &send_mqtt_frame_callback,
         .arg = NULL,
@@ -121,16 +118,15 @@ void send_mqtt_frame() {
     esp_timer_start_periodic(periodic_frame_send, 0.25 * 1000 * 1000);
 }
 
-void controlImgCaptureTask(bool enable) {
+// Not Used
+void controlImgCaptureTask(bool enable) { 
     if (enable) {
         if (!imgCaptureTaskEnabled) {
-            // Démarrer la tâche et stocker le handle
             xTaskCreatePinnedToCore(image_to_mqtt, "send img to broker", 4096, NULL, 5, &imgCaptureTaskHandle, 1);
             imgCaptureTaskEnabled = true;
         }
     } else {
         if (imgCaptureTaskEnabled) {
-            // Arrêter la tâche si elle est en cours d'exécution
             if (imgCaptureTaskHandle != NULL) {
                 vTaskDelete(imgCaptureTaskHandle);
                 imgCaptureTaskHandle = NULL;

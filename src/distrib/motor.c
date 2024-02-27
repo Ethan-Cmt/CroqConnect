@@ -21,7 +21,7 @@ static inline uint32_t motor_angle_to_compare(int angle)
 
 void motor_init(void)
 {
-    ESP_LOGI(TAG, "Initializing motor");
+    ESP_LOGI(TAG, "Initializing motor...");
 
     mcpwm_timer_handle_t timer = NULL;
     mcpwm_timer_config_t timer_config = {

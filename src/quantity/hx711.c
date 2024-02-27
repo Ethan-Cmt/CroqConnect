@@ -5,6 +5,7 @@
 #include <esp_timer.h>
 //#include "ets_sys.h"
 #include "hx711.h"
+#include <math.h>
 
 #define CONFIG_EXAMPLE_DOUT_GPIO  47  // GPIO47 (IO14) pour DOUT
 #define CONFIG_EXAMPLE_PD_SCK_GPIO 45  // GPIO45 (IO15) pour PD_SCK
@@ -50,8 +51,6 @@ static uint32_t read_raw(gpio_num_t dout, gpio_num_t pd_sck, hx711_gain_t gain)
 
     return data;
 }
-
-///////////////////////////////////////////////////////////////////////////////
 
 esp_err_t hx711_init(hx711_t *dev)
 {
@@ -189,6 +188,7 @@ void get_quantity(){
     int32_t data;
     r = hx711_read_average(&dev, CONFIG_EXAMPLE_AVG_TIMES, &data);
     int32_t quantity = r - tare_del;
+    quantity = (int32_t)round(0.002 * quantity); // 0,002 is calibration factor
     ESP_LOGI(TAG, "Current quantity: %" PRIi32, quantity);
     return;
 }

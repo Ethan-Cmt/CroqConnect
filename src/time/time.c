@@ -15,12 +15,11 @@ static const char *TAG = "time sync";
 
 #define DISTRIBUTION_SCHEDULE_NAMESPACE "schedule"
 
-// Fonction pour écrire les horaires dans la mémoire flash
 esp_err_t write_distribution_schedule(const DistributionSchedule *schedule) {
     nvs_handle_t nvs_handle;
     esp_err_t ret = nvs_open(DISTRIBUTION_SCHEDULE_NAMESPACE, NVS_READWRITE, &nvs_handle);
     if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Erreur lors de l'ouverture de la mémoire NVS: %s", esp_err_to_name(ret));
+        ESP_LOGE(TAG, "Error while opening NVS memort: %s", esp_err_to_name(ret));
         return ret;
     }
 
@@ -28,17 +27,16 @@ esp_err_t write_distribution_schedule(const DistributionSchedule *schedule) {
     if (ret == ESP_OK) {
         ret = nvs_commit(nvs_handle);
         if (ret != ESP_OK) {
-            ESP_LOGE(TAG, "Erreur lors de la validation des changements NVS: %s", esp_err_to_name(ret));
+            ESP_LOGE(TAG, "Error while validating NVS changes: %s", esp_err_to_name(ret));
         }
     } else {
-        ESP_LOGE(TAG, "Erreur lors de l'écriture des données dans la mémoire NVS: %s", esp_err_to_name(ret));
+        ESP_LOGE(TAG, "Error while writing data into NVS memory: %s", esp_err_to_name(ret));
     }
 
     nvs_close(nvs_handle);
     return ret;
 }
 
-// Fonction pour lire les horaires depuis la mémoire flash
 esp_err_t read_distribution_schedule(DistributionSchedule *schedule) {
     nvs_handle_t nvs_handle;
     esp_err_t ret = nvs_open(DISTRIBUTION_SCHEDULE_NAMESPACE, NVS_READONLY, &nvs_handle);
@@ -59,14 +57,14 @@ esp_err_t read_distribution_schedule(DistributionSchedule *schedule) {
 }
 
 void initialize_sntp() {
-    ESP_LOGI(TAG, "Initialisation du client SNTP...");
+    ESP_LOGI(TAG, "SNTP client init...");
     esp_sntp_setoperatingmode(SNTP_OPMODE_POLL);
     esp_sntp_setservername(0, "pool.ntp.org");
     esp_sntp_init();
 }
 
 void wait_for_time() {
-    ESP_LOGI(TAG, "En attente de la synchronisation de l'heure...");
+    ESP_LOGI(TAG, "Wait for Time sync...");
     time_t now = 0;
     struct tm timeinfo = {0};
 
@@ -76,7 +74,7 @@ void wait_for_time() {
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 
-    ESP_LOGI(TAG, "Heure synchronisée avec succès");
+    ESP_LOGI(TAG, "Time synchronized successfully");
 }
 
 void initialize_time() {
@@ -91,7 +89,7 @@ void initialize_time() {
 
     char strftime_buf[64];
     strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
-    ESP_LOGI(TAG, "Heure actuelle (UTC) : %s", strftime_buf);
+    ESP_LOGI(TAG, "Current Time (UTC) : %s", strftime_buf);
 
     if (timeinfo.tm_mon >= 3 && timeinfo.tm_mon < 10) {
         setenv("TZ", "CEST-2", 1);
@@ -131,12 +129,11 @@ void check_and_distribute_croquettes(const DistributionSchedule *schedule) {
 void distrib_time_check_callback(void *arg) {
     DistributionSchedule schedule;
 
-    // Lire les horaires depuis la mémoire flash
     esp_err_t ret = read_distribution_schedule(&schedule);
     if (ret == ESP_OK) {
         check_and_distribute_croquettes(&schedule);
     } else {
-        ESP_LOGE(TAG, "Erreur lors de la lecture des horaires depuis la mémoire flash");
+        ESP_LOGE(TAG, "Error while reading schedule from NVS memory");
     }
 }
 
@@ -148,7 +145,7 @@ void periodic_time_check() {
     };
     esp_timer_handle_t periodic_timer;
     esp_timer_create(&periodic_timer_args, &periodic_timer);
-    esp_timer_start_periodic(periodic_timer, 60 * 1000 * 1000); // Toutes les minutes
+    esp_timer_start_periodic(periodic_timer, 60 * 1000 * 1000);
 }
 
 char *get_current_time_string() {
@@ -169,7 +166,7 @@ char *get_current_time_string() {
     return result;
 }
 
-// Fonction utilitaire pour formater l'horaire en chaîne de caractères (HH:MM)
+// Format time (HH:MM)
 char *get_timer_string(int hour, int minute) {
     if (hour == 25 && minute == 61) {
         return strdup("inactif");
@@ -177,7 +174,7 @@ char *get_timer_string(int hour, int minute) {
 
     char *timer_string = (char *)malloc(6);  // 'HH:MM\0'
     if (timer_string == NULL) {
-        ESP_LOGE(TAG, "Erreur d'allocation mémoire");
+        ESP_LOGE(TAG, "Allocation memory error");
         return NULL;
     }
 
@@ -186,13 +183,13 @@ char *get_timer_string(int hour, int minute) {
     return timer_string;
 }
 
-// Fonction pour obtenir une chaîne de caractères avec les horaires au format JSON
+// Format time (JSON)
 char *get_schedule_json() {
     DistributionSchedule schedule;
     esp_err_t ret = read_distribution_schedule(&schedule);
 
     if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Erreur lors de la lecture des horaires depuis la mémoire flash");
+        ESP_LOGE(TAG, "Error while reading schedule from NVS memory");
         return NULL;
     }
 
@@ -207,10 +204,9 @@ char *get_schedule_json() {
 
     char *json_string = cJSON_PrintUnformatted(root);
 
-    // Libère la mémoire utilisée par l'objet cJSON
     cJSON_Delete(root);
 
-    // Remplace "26:65" par "inactif" si présent dans la chaîne JSON
+    // Replace "26:65" by "inactif" if in JSON 
     char *inactive_string = strstr(json_string, "\"26:65\"");
     if (inactive_string != NULL) {
         memcpy(inactive_string, "\"inactif\"", 8);
@@ -219,23 +215,20 @@ char *get_schedule_json() {
     return json_string;
 }
 
-// Fonction pour extraire et enregistrer les horaires depuis une chaîne JSON
 void update_schedule_from_json(const char *json_string) {
     // Parse la chaîne JSON
     cJSON *root = cJSON_Parse(json_string);
     if (root == NULL) {
-        ESP_LOGE(TAG, "Erreur lors du parsing JSON");
+        ESP_LOGE(TAG, "Error while parsing JSON");
         return;
     }
 
-    // Crée une instance de DistributionSchedule
     DistributionSchedule new_schedule;
 
-    // Initialise les heures à '25:61' par défaut
+    // Every hour init w/ fake schedule
     new_schedule.hour_1 = new_schedule.hour_2 = new_schedule.hour_3 = new_schedule.hour_4 = new_schedule.hour_5 = new_schedule.hour_6 = 25;
     new_schedule.minute_1 = new_schedule.minute_2 = new_schedule.minute_3 = new_schedule.minute_4 = new_schedule.minute_5 = new_schedule.minute_6 = 61;
 
-    // Attribue les horaires si présents dans la chaîne JSON
     for (int i = 1; i <= 6; i++) {
         char key[10];
         sprintf(key, "timer%d", i);
@@ -276,20 +269,18 @@ void update_schedule_from_json(const char *json_string) {
         }
     }
 
-    // Libère la mémoire utilisée par l'objet cJSON
     cJSON_Delete(root);
 
-    // Écrit les nouveaux horaires dans la mémoire flash NVS
     esp_err_t ret = write_distribution_schedule(&new_schedule);
     if (ret == ESP_OK) {
-        ESP_LOGI(TAG, "Horaires mis à jour avec succès");
+        ESP_LOGI(TAG, "Scheduled updated successfully");
     } else {
-        ESP_LOGE(TAG, "Erreur lors de la mise à jour des horaires : %s", esp_err_to_name(ret));
+        ESP_LOGE(TAG, "Error occured while updating schedule : %s", esp_err_to_name(ret));
     }
     DistributionSchedule current_schedule;
     esp_err_t retu = read_distribution_schedule(&current_schedule);
     if (retu == ESP_OK) {
-        ESP_LOGI(TAG, "Horaires actuels sauvegardés :");
+        ESP_LOGI(TAG, "Current saved timer(s) :");
         ESP_LOGI(TAG, "Timer 1 : %02d:%02d", current_schedule.hour_1, current_schedule.minute_1);
         ESP_LOGI(TAG, "Timer 2 : %02d:%02d", current_schedule.hour_2, current_schedule.minute_2);
         ESP_LOGI(TAG, "Timer 3 : %02d:%02d", current_schedule.hour_3, current_schedule.minute_3);
@@ -297,7 +288,7 @@ void update_schedule_from_json(const char *json_string) {
         ESP_LOGI(TAG, "Timer 5 : %02d:%02d", current_schedule.hour_5, current_schedule.minute_5);
         ESP_LOGI(TAG, "Timer 6 : %02d:%02d", current_schedule.hour_6, current_schedule.minute_6);
     } else {
-        ESP_LOGE(TAG, "Erreur lors de la lecture des horaires depuis la mémoire flash : %s", esp_err_to_name(ret));
+        ESP_LOGE(TAG, "Error while reading schedule from NVS memory : %s", esp_err_to_name(ret));
     }
     send_schedule_to_mqtt();
 }
@@ -314,5 +305,5 @@ void periodic_schedule_send() {
     };
     esp_timer_handle_t periodic_sched_sender;
     esp_timer_create(&sched_sender_args, &periodic_sched_sender);
-    esp_timer_start_periodic(periodic_sched_sender, 10 * 1000 * 1000); // Toutes les 10 secs
+    esp_timer_start_periodic(periodic_sched_sender, 10 * 1000 * 1000);
 }

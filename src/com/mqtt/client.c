@@ -22,25 +22,21 @@ bool mqtt_connected = false;
 
 static esp_mqtt_client_handle_t client;
 
-void mqtt_process_received_data(const char *topic, int topic_len, const char *data, int data_len) {
+// Actions depending on MQTT messages recevied
+void mqtt_process_received_data(const char *topic, int topic_len, const char *data, int data_len) { 
     ESP_LOGI(TAG, "Topic: %.*s, Data: %.*s", topic_len, topic, data_len, data);
 
-    // Vérifier si le message est reçu sur le topic 'distribution'
-    if (strncmp(topic, "distribution", topic_len) == 0) {
+    if (strncmp(topic, "distribution", topic_len) == 0) { // Instant distribution order
         distribute_croquettes();
     }
-    // Vérifier si le message est reçu sur le topic 'tasks/img_capture'
-    if (strncmp(topic, "tasks/img_capture", topic_len) == 0) {
-        // Démarrer ou arrêter la tâche en fonction de la valeur du message
+    if (strncmp(topic, "tasks/img_capture", topic_len) == 0) { // Not used
         if (strncmp(data, "on", data_len) == 0) {
             //send_mqtt_frame();
         } else if (strncmp(data, "off", data_len) == 0) {
             //controlImgCaptureTask(false);
         }
     }
-        // Vérifier si le message est reçu sur le topic 'timer/Settings'
-    if (strncmp(topic, "timer/Settings", topic_len) == 0) {
-        // Mettre à jour les horaires à partir de la chaîne JSON reçue
+    if (strncmp(topic, "timer/Settings", topic_len) == 0) { // Update schedule order
         update_schedule_from_json(data);
     }
 }
@@ -48,28 +44,29 @@ void mqtt_process_received_data(const char *topic, int topic_len, const char *da
 void mqtt_publish_message(const char *topic, const char *message, int retain)
 {
     esp_mqtt_client_publish(client, topic, message, 0, 1, retain);
-    ESP_LOGI(TAG, "Message publié sur le topic %s : %s", topic, message);
+    ESP_LOGI(TAG, "Message published on Topic : %s : %s", topic, message);
 }
 
 void mqtt_subscribe(const char *topic, int qos)
 {
     esp_mqtt_client_subscribe(client, (char *)topic, qos);
-    ESP_LOGI(TAG, "Abonnement au topic MQTT : %s", topic);
+    ESP_LOGI(TAG, "Subscribting to MQTT Topic : %s", topic);
 }
 
 void mqtt_unsubscribe(const char *topic)
 {
     esp_mqtt_client_unsubscribe(client, topic);
-    ESP_LOGI(TAG, "Désabonnement du topic MQTT : %s", topic);
+    ESP_LOGI(TAG, "Unsubscribing to MQTT Topic : %s", topic);
 }
 
+// MQTT Event Handler
 static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t event_base, int32_t event_id, void *event_data) {
     esp_mqtt_event_handle_t event = (esp_mqtt_event_handle_t) event_data;
     esp_mqtt_client_handle_t client = (esp_mqtt_client_handle_t) event_handler_arg;
 
     switch (event_id) {
         case MQTT_EVENT_CONNECTED:
-            ESP_LOGI(TAG, "Connecté au broker MQTT");
+            ESP_LOGI(TAG, "Connected to MQTT Broker");
             mqtt_connected = true;
             mqtt_subscribe("distribution", 1);
             mqtt_subscribe("tasks/img_capture", 1);
@@ -78,19 +75,19 @@ static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t ev
             xSemaphoreGive(imageUploadSemaphore);
             break;
         case MQTT_EVENT_DISCONNECTED:
-            ESP_LOGI(TAG, "Déconnecté du broker MQTT");
+            ESP_LOGI(TAG, "Disconnected from MQTT Broker");
             mqtt_connected = false;
             vTaskDelay(pdMS_TO_TICKS(2500));
             esp_mqtt_client_reconnect(client);
             break;
         case MQTT_EVENT_SUBSCRIBED:
-            ESP_LOGI(TAG, "Abonnement réussi à un sujet MQTT");
+            ESP_LOGI(TAG, "Successfull MQTT subscription");
             break;
         case MQTT_EVENT_PUBLISHED:
-            ESP_LOGI(TAG, "Message MQTT publié avec succès");
+            ESP_LOGI(TAG, "Successfull MQTT publish");
             break;
         case MQTT_EVENT_DATA:
-            ESP_LOGI(TAG, "Message MQTT reçu");
+            ESP_LOGI(TAG, "MQTT message received");
             mqtt_process_received_data(event->topic, event->topic_len, event->data, event->data_len);
             break;
         default:
@@ -100,9 +97,10 @@ static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t ev
     return ESP_OK;
 }
 
+// Main MQTT client initalizer
 void mqtt_app_start(void)
 {
-    ESP_LOGI(TAG, "Initialisation de la configuration MQTT");
+    ESP_LOGI(TAG, "Init MQTT conifg...");
     esp_mqtt_client_config_t mqtt_cfg = {
         .broker = {
             .address = {
@@ -164,16 +162,16 @@ void mqtt_app_start(void)
         },
     };
 
-    ESP_LOGI(TAG, "Initialisation du client MQTT");
+    ESP_LOGI(TAG, "MQTT Client Init...");
     client = esp_mqtt_client_init(&mqtt_cfg);
 
-    ESP_LOGI(TAG, "Enregistrement du gestionnaire d'événements MQTT");
+    ESP_LOGI(TAG, "Loading MQTT Event Handler...");
     esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, &mqtt_event_handler, client);
 
-    ESP_LOGI(TAG, "Démarrage du client MQTT");
+    ESP_LOGI(TAG, "Starting MQTT client...");
     esp_mqtt_client_start(client);
 
-    ESP_LOGI(TAG, "Fonction mqtt_app_start terminée");
+    ESP_LOGI(TAG, "MQTT Start Done. Waiting for connection...");
 
 }
 
@@ -182,11 +180,11 @@ void send_image_data(uint8_t *image_data, size_t image_size)
     if (xSemaphoreTake(imageUploadSemaphore, portMAX_DELAY) == pdTRUE) {
         esp_err_t result = esp_mqtt_client_publish(client, "image", (char *)image_data, image_size, 0, 0);
         if (result != ESP_OK) {
-            ESP_LOGI(TAG, "Fin du mqtt_publish : %d", result);
+            ESP_LOGI(TAG, "Done publishing image : %d", result);
         }
         xSemaphoreGive(imageUploadSemaphore);
     } else {
-        ESP_LOGE(TAG, "Impossible d'obtenir le sémaphore d'envoi d'image");
+        ESP_LOGE(TAG, "Cannot get UploadImage Semaphore");
     }
 }
 

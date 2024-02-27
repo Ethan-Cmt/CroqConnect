@@ -16,11 +16,12 @@
 
 #define TAG "MAIN"
 
-SemaphoreHandle_t mqttConnectedSemaphore;
+SemaphoreHandle_t mqttConnectedSemaphore; 
 SemaphoreHandle_t imageUploadSemaphore;
 
 void app_main()
 {
+    // NVS Flash memory init
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
         ESP_ERROR_CHECK(nvs_flash_erase());
@@ -28,7 +29,7 @@ void app_main()
     }
     ESP_ERROR_CHECK(ret);
 
-    esp_log_level_set("*", ESP_LOG_DEBUG);
+    esp_log_level_set("*", ESP_LOG_DEBUG); //Log level setted to DEBUG
 
     mqttConnectedSemaphore = xSemaphoreCreateBinary();
     if (mqttConnectedSemaphore == NULL) {
@@ -45,13 +46,13 @@ void app_main()
 
     motor_init();
     init_camera();
-    tare();
+    tare(); // TODO : Add a check to make sure palte is empty before taring
 
     ESP_ERROR_CHECK(nvs_flash_init());
-    wifi_init_sta();
+    wifi_init_sta(); // Try to connect to wifi w/ saved credentials
 
-    // Attendre jusqu'à ce que l'adresse IP soit obtenue (timeout de 10 secondes)
-    for (int i = 0; i < 300; i++)
+    // Waiting to get IP adress until 50 secs
+    for (int i = 0; i < 500; i++)
     {
         vTaskDelay(pdMS_TO_TICKS(100));
         if (ip_obtained)
@@ -62,7 +63,7 @@ void app_main()
             mqtt_app_start();
 
             periodic_time_check();
-            while (1) { //permanently sending data
+            while (1) { // MQTT sender loop
                 if (mqtt_connected) {
                     send_mqtt_frame();
                     periodic_schedule_send();
