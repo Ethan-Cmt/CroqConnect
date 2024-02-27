@@ -8,6 +8,7 @@
 #include "distrib/croquettes.h"
 #include "camera/cam.h"
 #include "time/time.h"
+#include "quantity/hx711.h"
 #include "main.h"
 
 #define MQTT_BROKER_ADDRESS "91.165.181.168"
@@ -191,4 +192,10 @@ void send_image_data(uint8_t *image_data, size_t image_size)
 void send_schedule_to_mqtt() {
     char *schedule_string = get_schedule_json();
     esp_mqtt_client_publish(client, "timer/Current", schedule_string, 0, 1, 0);
+}
+
+void send_quantity_to_mqtt() {
+    char quantity_string[5];
+    snprintf(quantity_string, sizeof(quantity_string), "%" PRIi32, get_quantity());
+    esp_mqtt_client_publish(client, "quantity/Current", quantity_string, 0, 1, 0);
 }

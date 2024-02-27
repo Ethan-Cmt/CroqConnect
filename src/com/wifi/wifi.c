@@ -249,7 +249,7 @@ esp_err_t connect_post_handler(httpd_req_t *req) {
     #define MAX_POST_DATA_SIZE 128
     char post_data[MAX_POST_DATA_SIZE];
 
-    // Récupérer les données POST sous forme de chaîne
+    // Get POST data as chain
     size_t post_data_len = httpd_req_recv(req, post_data, MAX_POST_DATA_SIZE);
     if (post_data_len <= 0) {
         ESP_LOGE(TAG, "Error while receiving POST data");

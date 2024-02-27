@@ -52,7 +52,7 @@ void app_main()
     wifi_init_sta(); // Try to connect to wifi w/ saved credentials
 
     // Waiting to get IP adress until 50 secs
-    for (int i = 0; i < 500; i++)
+    for (int i = 0; i < 300; i++)
     {
         vTaskDelay(pdMS_TO_TICKS(100));
         if (ip_obtained)
@@ -67,6 +67,7 @@ void app_main()
                 if (mqtt_connected) {
                     send_mqtt_frame();
                     periodic_schedule_send();
+                    periodic_quantity_send();
                     break;
                 }
                 vTaskDelay(pdMS_TO_TICKS(250));

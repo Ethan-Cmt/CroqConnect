@@ -3,6 +3,7 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include <esp_timer.h>
+#include "com/mqtt/client.h"
 //#include "ets_sys.h"
 #include "hx711.h"
 #include <math.h>
@@ -172,7 +173,7 @@ void tare(){
     return;
 }
 
-void get_quantity(){
+int32_t get_quantity(){
     hx711_t dev = {
         .dout = CONFIG_EXAMPLE_DOUT_GPIO,
         .pd_sck = CONFIG_EXAMPLE_PD_SCK_GPIO,
@@ -190,5 +191,20 @@ void get_quantity(){
     int32_t quantity = r - tare_del;
     quantity = (int32_t)round(0.002 * quantity); // 0,002 is calibration factor
     ESP_LOGI(TAG, "Current quantity: %" PRIi32, quantity);
-    return;
+    return quantity;
+}
+
+void send_quantity_callback(void *arg) {
+    send_quantity_to_mqtt();
+}
+
+void periodic_quantity_send() {
+    const esp_timer_create_args_t send_quantity_args = {
+        .callback = &send_quantity_callback,
+        .arg = NULL,
+        .name = "send_quantity"
+    };
+    esp_timer_handle_t periodic_quant_sender;
+    esp_timer_create(&send_quantity_args, &periodic_quant_sender);
+    esp_timer_start_periodic(periodic_quant_sender, 5 * 1000 * 1000);
 }
