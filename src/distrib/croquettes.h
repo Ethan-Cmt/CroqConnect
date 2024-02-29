@@ -4,6 +4,6 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-void distribute_croquettes();
+void distribute_croquettes(int quantity);
 
 #endif  // CROQUETTES_H

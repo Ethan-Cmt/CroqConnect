@@ -20,7 +20,7 @@
 
 static portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
 
-static const char *TAG = "hx711-example";
+static const char *TAG = "quantity";
 
 int32_t tare_del;
 
@@ -125,8 +125,6 @@ esp_err_t hx711_read_data(hx711_t *dev, int32_t *data)
         raw |= 0xff000000;
     *data = *((int32_t *)&raw);
 
-    ESP_LOGI(TAG, "HX711 raw data: %" PRIi32, *data);
-
     return ESP_OK;
 }
 
@@ -143,8 +141,6 @@ int32_t hx711_read_average(hx711_t *dev, size_t times, int32_t *data)
         *data += v;
     }
     *data /= (int32_t) times;
-
-    ESP_LOGI(TAG, "HX711 average data: %" PRIi32, *data);
 
     return *data;
 }
@@ -206,5 +202,5 @@ void periodic_quantity_send() {
     };
     esp_timer_handle_t periodic_quant_sender;
     esp_timer_create(&send_quantity_args, &periodic_quant_sender);
-    esp_timer_start_periodic(periodic_quant_sender, 5 * 1000 * 1000);
+    esp_timer_start_periodic(periodic_quant_sender, 3 * 1000 * 1000);
 }

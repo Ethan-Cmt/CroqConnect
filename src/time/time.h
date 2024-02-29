@@ -3,7 +3,7 @@
 
 #include "esp_system.h"
 
-// Structure pour stocker les horaires de distribution
+// Store schedule in strcuture
 typedef struct {
     int hour_1;
     int minute_1;
@@ -19,10 +19,8 @@ typedef struct {
     int minute_6;
 } DistributionSchedule;
 
-// Fonction pour écrire les horaires dans la mémoire flash
 esp_err_t write_distribution_schedule(const DistributionSchedule *schedule);
 
-// Fonction pour lire les horaires depuis la mémoire flash
 esp_err_t read_distribution_schedule(DistributionSchedule *schedule);
 
 void initialize_sntp();

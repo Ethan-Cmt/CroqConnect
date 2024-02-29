@@ -13,6 +13,8 @@
 #include "camera/cam.h"
 #include "distrib/motor.h"
 #include "quantity/hx711.h"
+#include "quantity/portions.h"
+
 
 #define TAG "MAIN"
 
@@ -29,7 +31,7 @@ void app_main()
     }
     ESP_ERROR_CHECK(ret);
 
-    esp_log_level_set("*", ESP_LOG_DEBUG); //Log level setted to DEBUG
+    esp_log_level_set("*", ESP_LOG_DEBUG); //Log level set to DEBUG
 
     mqttConnectedSemaphore = xSemaphoreCreateBinary();
     if (mqttConnectedSemaphore == NULL) {
@@ -46,13 +48,13 @@ void app_main()
 
     motor_init();
     init_camera();
-    tare(); // TODO : Add a check to make sure palte is empty before taring
+    tare();
 
     ESP_ERROR_CHECK(nvs_flash_init());
     wifi_init_sta(); // Try to connect to wifi w/ saved credentials
 
-    // Waiting to get IP adress until 50 secs
-    for (int i = 0; i < 300; i++)
+    // Waiting to get IP adress until 60 secs
+    for (int i = 0; i < 600; i++)
     {
         vTaskDelay(pdMS_TO_TICKS(100));
         if (ip_obtained)
@@ -62,17 +64,20 @@ void app_main()
             initialize_time();
             mqtt_app_start();
 
-            periodic_time_check();
+            periodic_time_check(); // May be replaced by C Timer(s)
             while (1) { // MQTT sender loop
                 if (mqtt_connected) {
-                    send_mqtt_frame();
+                    //xTaskCreatePinnedToCore(send_mqtt_frame_callback, "img_sndr", 4096, NULL, 5, NULL, 1); // Test for others periodic tasks
                     periodic_schedule_send();
+                    periodic_portions_send();
                     periodic_quantity_send();
                     break;
                 }
+                vTaskDelay(pdMS_TO_TICKS(100));
+            }
+            while (1) {
                 vTaskDelay(pdMS_TO_TICKS(250));
             }
-            break;
         }
     }
 }

@@ -6,13 +6,18 @@
 #include "com/mqtt/client.h"
 #include "distrib/motor.h"
 #include "camera/cam.h"
+#include "com/mqtt/client.h"
 
 static const char *TAG = "distrib";
 
-void distribute_croquettes() { // TODO : Add paramaeter 'portion' which corresponds to a precise quantity
+void distribute_croquettes(int quantity) {
     ESP_LOGI(TAG, "Distribution...");
     char* current_time_str = get_current_time_string();
-    motor_set_angle(89); // May change
+
+    for (int i = 0; i < quantity; ++i) {
+        motor_set_angle(30); // May change depending on the angle for 10g
+        vTaskDelay(500 / portTICK_PERIOD_MS);
+    }
 
     if (current_time_str != NULL) {
         char message[100];
@@ -24,5 +29,6 @@ void distribute_croquettes() { // TODO : Add paramaeter 'portion' which correspo
     } else {
         ESP_LOGE(TAG, "Erreur while trying to get current time");
     }
+    send_quantity_to_mqtt();
     ESP_LOGI(TAG, "Distribution done."); // TODO : Add HX711 diff check
 }

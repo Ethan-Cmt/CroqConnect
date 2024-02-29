@@ -84,7 +84,7 @@ void init_camera() {
 void image_to_mqtt() {
     if (!mqtt_connected) { 
         ESP_LOGE(TAG, "MQTT connection not established. Cannot send image.");
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        vTaskDelay(100 / portTICK_PERIOD_MS);
         return;
     }
 
@@ -103,7 +103,11 @@ void image_to_mqtt() {
 }
 
 void send_mqtt_frame_callback(void *arg) {
-    image_to_mqtt();
+    while (1) {
+        ESP_LOGI(TAG, "Bonjour bonjour ");
+        image_to_mqtt();
+        vTaskDelay(50 / portTICK_PERIOD_MS);
+    }
 }
 
 // Periodic image sending w/ MQTT
@@ -116,6 +120,7 @@ void send_mqtt_frame() {
     esp_timer_handle_t periodic_frame_send;
     esp_timer_create(&mqtt_frame_args, &periodic_frame_send);
     esp_timer_start_periodic(periodic_frame_send, 0.25 * 1000 * 1000);
+    vTaskDelete(NULL);
 }
 
 // Not Used

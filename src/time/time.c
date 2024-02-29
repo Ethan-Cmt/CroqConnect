@@ -9,6 +9,7 @@
 
 #include "distrib/croquettes.h"
 #include "com/mqtt/client.h"
+#include "quantity/portions.h"
 #include "time.h"
 
 static const char *TAG = "time sync";
@@ -107,22 +108,22 @@ void initialize_time() {
 void check_and_distribute_croquettes(const DistributionSchedule *schedule) {
     time_t now;
     struct tm timeinfo;
-
     time(&now);
     localtime_r(&now, &timeinfo);
+    TimerPortions quantity = get_distrib_quantity();
 
     if (timeinfo.tm_hour == schedule->hour_1 && timeinfo.tm_min == schedule->minute_1) {
-        distribute_croquettes();
+        distribute_croquettes(quantity.portion_1);
     } else if (timeinfo.tm_hour == schedule->hour_2 && timeinfo.tm_min == schedule->minute_2) {
-        distribute_croquettes();
+        distribute_croquettes(quantity.portion_2);
     } else if (timeinfo.tm_hour == schedule->hour_3 && timeinfo.tm_min == schedule->minute_3) {
-        distribute_croquettes();
+        distribute_croquettes(quantity.portion_3);
     } else if (timeinfo.tm_hour == schedule->hour_4 && timeinfo.tm_min == schedule->minute_4) {
-        distribute_croquettes();
+        distribute_croquettes(quantity.portion_4);
     } else if (timeinfo.tm_hour == schedule->hour_5 && timeinfo.tm_min == schedule->minute_5) {
-        distribute_croquettes();
+        distribute_croquettes(quantity.portion_5);
     } else if (timeinfo.tm_hour == schedule->hour_6 && timeinfo.tm_min == schedule->minute_6) {
-        distribute_croquettes();
+        distribute_croquettes(quantity.portion_6);
     }
 }
 
@@ -305,5 +306,5 @@ void periodic_schedule_send() {
     };
     esp_timer_handle_t periodic_sched_sender;
     esp_timer_create(&sched_sender_args, &periodic_sched_sender);
-    esp_timer_start_periodic(periodic_sched_sender, 10 * 1000 * 1000);
+    esp_timer_start_periodic(periodic_sched_sender, 60 * 1000 * 1000);
 }

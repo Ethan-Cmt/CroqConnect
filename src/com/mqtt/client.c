@@ -9,6 +9,7 @@
 #include "camera/cam.h"
 #include "time/time.h"
 #include "quantity/hx711.h"
+#include "quantity/portions.h"
 #include "main.h"
 
 #define MQTT_BROKER_ADDRESS "91.165.181.168"
@@ -28,7 +29,7 @@ void mqtt_process_received_data(const char *topic, int topic_len, const char *da
     ESP_LOGI(TAG, "Topic: %.*s, Data: %.*s", topic_len, topic, data_len, data);
 
     if (strncmp(topic, "distribution", topic_len) == 0) { // Instant distribution order
-        distribute_croquettes();
+        distribute_croquettes(1);
     }
     if (strncmp(topic, "tasks/img_capture", topic_len) == 0) { // Not used
         if (strncmp(data, "on", data_len) == 0) {
@@ -37,8 +38,11 @@ void mqtt_process_received_data(const char *topic, int topic_len, const char *da
             //controlImgCaptureTask(false);
         }
     }
-    if (strncmp(topic, "timer/Settings", topic_len) == 0) { // Update schedule order
+    if (strncmp(topic, "timer/Settings", topic_len) == 0) { // Update schedule
         update_schedule_from_json(data);
+    }
+    if (strncmp(topic, "timer/Quantities", topic_len) == 0) { // Update quantities for scheduled distrib
+        update_portions_from_json(data);
     }
 }
 
@@ -72,14 +76,14 @@ static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t ev
             mqtt_subscribe("distribution", 1);
             mqtt_subscribe("tasks/img_capture", 1);
             mqtt_subscribe("timer/Settings", 1);
+            mqtt_subscribe("timer/Quantities", 1);
             xSemaphoreGive(mqttConnectedSemaphore);
-            xSemaphoreGive(imageUploadSemaphore);
             break;
         case MQTT_EVENT_DISCONNECTED:
             ESP_LOGI(TAG, "Disconnected from MQTT Broker");
             mqtt_connected = false;
-            vTaskDelay(pdMS_TO_TICKS(2500));
-            esp_mqtt_client_reconnect(client);
+            //vTaskDelay(pdMS_TO_TICKS(5000));
+            //esp_mqtt_client_reconnect(client);
             break;
         case MQTT_EVENT_SUBSCRIBED:
             ESP_LOGI(TAG, "Successfull MQTT subscription");
@@ -114,10 +118,10 @@ void mqtt_app_start(void)
         },
         .credentials = {
             .username = NULL, // MQTT username
-            .client_id = "ethan", // MQTT client identifier, set to NULL for default client id
+            .client_id = "Distributor", // MQTT client identifier, set to NULL for default client id
             .set_null_client_id = false, // Selects a NULL client id
             .authentication = {
-                .password = "pswrd", // MQTT password
+                .password = NULL, // MQTT password
                 .certificate = NULL, // Certificate for SSL mutual authentication
                 .certificate_len = 0, // Length of the buffer pointed to by certificate
                 .key = NULL, // Private key for SSL mutual authentication
@@ -145,7 +149,7 @@ void mqtt_app_start(void)
         .network = {
             .reconnect_timeout_ms = 10000, // Reconnect to the broker after this value in milliseconds
             .timeout_ms = 10000, // Abort network operation if not completed after this value in milliseconds
-            .refresh_connection_after_ms = 60000, // Refresh connection after this value in milliseconds
+            .refresh_connection_after_ms = 65000, // Refresh connection after this value in milliseconds
             .disable_auto_reconnect = false, // Client will reconnect to the server (when errors/disconnect)
             .transport = NULL, // Custom transport handle to use, NULL for default
             .if_name = NULL, // The name of the interface for data to go through
@@ -178,24 +182,24 @@ void mqtt_app_start(void)
 
 void send_image_data(uint8_t *image_data, size_t image_size)
 {
-    if (xSemaphoreTake(imageUploadSemaphore, portMAX_DELAY) == pdTRUE) {
-        esp_err_t result = esp_mqtt_client_publish(client, "image", (char *)image_data, image_size, 0, 0);
-        if (result != ESP_OK) {
-            ESP_LOGI(TAG, "Done publishing image : %d", result);
-        }
-        xSemaphoreGive(imageUploadSemaphore);
-    } else {
-        ESP_LOGE(TAG, "Cannot get UploadImage Semaphore");
+    esp_err_t result = esp_mqtt_client_publish(client, "image", (char *)image_data, image_size, 0, 0);
+    if (result != ESP_OK) {
+        ESP_LOGI(TAG, "Done publishing image : %d", result);
     }
 }
 
 void send_schedule_to_mqtt() {
     char *schedule_string = get_schedule_json();
-    esp_mqtt_client_publish(client, "timer/Current", schedule_string, 0, 1, 0);
+    esp_mqtt_client_publish(client, "timer/CurrentTimers", schedule_string, 0, 1, 0);
+}
+
+void send_portions_to_mqtt() {
+    char *portions_string = get_portions_json();
+    esp_mqtt_client_publish(client, "timer/CurrentQuantities", portions_string, 0, 1, 0);
 }
 
 void send_quantity_to_mqtt() {
     char quantity_string[5];
     snprintf(quantity_string, sizeof(quantity_string), "%" PRIi32, get_quantity());
-    esp_mqtt_client_publish(client, "quantity/Current", quantity_string, 0, 1, 0);
+    esp_mqtt_client_publish(client, "quantity/Current", quantity_string, 0, 0, 0);
 }
