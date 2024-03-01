@@ -182,9 +182,25 @@ void mqtt_app_start(void)
 
 void send_image_data(uint8_t *image_data, size_t image_size)
 {
-    esp_err_t result = esp_mqtt_client_publish(client, "image", (char *)image_data, image_size, 0, 0);
-    if (result != ESP_OK) {
-        ESP_LOGI(TAG, "Done publishing image : %d", result);
+    if (xSemaphoreTake(imageUploadSemaphore, portMAX_DELAY) == pdTRUE)
+    {
+        esp_err_t result = esp_mqtt_client_publish(client, "image", (char *)image_data, image_size, 0, 0);
+        
+        //xSemaphoreGive(imageUploadSemaphore);
+
+        if (result != ESP_OK) {
+            ESP_LOGI(TAG, "Done publishing image : %d", result);
+            xSemaphoreGive(imageUploadSemaphore);
+        }
+        else {
+            ESP_LOGI(TAG, "Done publishing image : %d", result);
+            xSemaphoreGive(imageUploadSemaphore); 
+        }
+    }
+    else
+    {
+        // La tâche n'a pas pu acquérir le sémaphore, gestion de l'erreur ici
+        ESP_LOGE(TAG, "Impossible d'acquérir le sémaphore pour l'envoi d'image");
     }
 }
 

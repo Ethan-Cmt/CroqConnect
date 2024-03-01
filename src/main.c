@@ -44,6 +44,9 @@ void app_main()
         ESP_LOGE(TAG, "Impossible de créer le sémaphore pour l'envoi d'image");
         vTaskDelay(portMAX_DELAY);
     }
+    else {
+        xSemaphoreGive(imageUploadSemaphore);
+    }
 
 
     motor_init();
@@ -67,7 +70,7 @@ void app_main()
             periodic_time_check(); // May be replaced by C Timer(s)
             while (1) { // MQTT sender loop
                 if (mqtt_connected) {
-                    //xTaskCreatePinnedToCore(send_mqtt_frame_callback, "img_sndr", 4096, NULL, 5, NULL, 1); // Test for others periodic tasks
+                    xTaskCreatePinnedToCore(send_mqtt_frame_callback, "img_sndr", 4096, NULL, 5, NULL, 1); // Test for others periodic tasks
                     periodic_schedule_send();
                     periodic_portions_send();
                     periodic_quantity_send();

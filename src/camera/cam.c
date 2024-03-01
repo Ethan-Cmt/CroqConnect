@@ -104,9 +104,8 @@ void image_to_mqtt() {
 
 void send_mqtt_frame_callback(void *arg) {
     while (1) {
-        ESP_LOGI(TAG, "Bonjour bonjour ");
         image_to_mqtt();
-        vTaskDelay(50 / portTICK_PERIOD_MS);
+        //vTaskDelay(50 / portTICK_PERIOD_MS);
     }
 }
 
