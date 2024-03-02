@@ -23,7 +23,7 @@ void distribute_croquettes(int quantity) {
 
     if (current_time_str != NULL) {
         char message[100];
-        snprintf(message, sizeof(message), "last ditrib : %s", current_time_str);
+        snprintf(message, sizeof(message), "last ditribution : %dg, %s", quantity, current_time_str);
 
         mqtt_publish_message("distribution/last", message, 1);
 
