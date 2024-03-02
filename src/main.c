@@ -67,7 +67,7 @@ void app_main()
             initialize_time();
             mqtt_app_start();
 
-            periodic_time_check(); // May be replaced by C Timer(s)
+            periodic_time_check(); // May be replaced by C Timer(s) OR Task on core 1 w/ high priority
             while (1) { // MQTT sender loop
                 if (mqtt_connected) {
                     xTaskCreatePinnedToCore(send_mqtt_frame_callback, "img_sndr", 4096, NULL, 5, NULL, 1); // Test for others periodic tasks

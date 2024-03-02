@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+extern int current_angle;
+
 void motor_init();
 void motor_set_angle(int angle);
 

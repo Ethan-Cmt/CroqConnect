@@ -29,7 +29,7 @@ void mqtt_process_received_data(const char *topic, int topic_len, const char *da
     ESP_LOGI(TAG, "Topic: %.*s, Data: %.*s", topic_len, topic, data_len, data);
 
     if (strncmp(topic, "distribution", topic_len) == 0) { // Instant distribution order
-        distribute_croquettes(1);
+        distribute_croquettes(10);
     }
     if (strncmp(topic, "tasks/img_capture", topic_len) == 0) { // Not used
         if (strncmp(data, "on", data_len) == 0) {

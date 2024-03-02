@@ -13,10 +13,12 @@ static const char *TAG = "distrib";
 void distribute_croquettes(int quantity) {
     ESP_LOGI(TAG, "Distribution...");
     char* current_time_str = get_current_time_string();
+    int rotations = quantity/10;
+    ESP_LOGI(TAG, "rotations : %d", rotations);
 
-    for (int i = 0; i < quantity; ++i) {
-        motor_set_angle(30); // May change depending on the angle for 10g
-        vTaskDelay(500 / portTICK_PERIOD_MS);
+    for (int i = 0; i < rotations; ++i) {
+        motor_set_angle(179);
+        motor_set_angle(-179); // May change depending on the angle for 10g. Maybe encapsuled in task w/ big priority
     }
 
     if (current_time_str != NULL) {
@@ -30,5 +32,7 @@ void distribute_croquettes(int quantity) {
         ESP_LOGE(TAG, "Erreur while trying to get current time");
     }
     send_quantity_to_mqtt();
-    ESP_LOGI(TAG, "Distribution done."); // TODO : Add HX711 diff check
+    ESP_LOGI(TAG, "Distribution done.");
 }
+
+
