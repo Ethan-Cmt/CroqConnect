@@ -12,15 +12,6 @@
 #include "esp_http_server.h"
 #include "wifi.h"
 
-#define WIFI_SSID "freebox_XZNEAJ"
-#define WIFI_PASSWORD "99D654DC27E64AB6D7C4D019BC"
-
-#define PHONE_SSID "iPhone de Ethan"
-#define PHONE_PASSWORD "ethan93130"
-
-#define CRETEIL_SSID "WATI-BOX"
-#define CRETEIL_PASSWORD "SMJ2022_"
-
 #define AP_SSID "Croq'Connect"
 #define AP_PASS "password!"
 
