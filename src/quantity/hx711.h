@@ -137,6 +137,7 @@ int32_t hx711_read_average(hx711_t *dev, size_t times, int32_t *data);
 extern int32_t tare_del;
 
 void tare();
+void init_tare();
 int32_t get_quantity();
 void send_quantity_callback(void *arg);
 void periodic_quantity_send();

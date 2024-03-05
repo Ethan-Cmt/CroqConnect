@@ -145,7 +145,7 @@ int32_t hx711_read_average(hx711_t *dev, size_t times, int32_t *data)
     return *data;
 }
 
-void tare(){
+void init_tare(){
     ESP_LOGI(TAG, "Taring...");
     hx711_t dev = {
         .dout = CONFIG_EXAMPLE_DOUT_GPIO,
@@ -164,6 +164,26 @@ void tare(){
     }
 
     int32_t data;
+    tare_del = hx711_read_average(&dev, CONFIG_EXAMPLE_AVG_TIMES, &data);
+    ESP_LOGI(TAG, "Tare is: %" PRIi32, tare_del);
+    return;
+}
+
+void tare(){
+    hx711_t dev = {
+        .dout = CONFIG_EXAMPLE_DOUT_GPIO,
+        .pd_sck = CONFIG_EXAMPLE_PD_SCK_GPIO,
+        .gain = HX711_GAIN_A_64
+    };
+
+    esp_err_t r = hx711_wait(&dev, 500);
+    if (r != ESP_OK)
+    {
+        ESP_LOGE(TAG, "Device not found: %d (%s)\n", r, esp_err_to_name(r));
+    }
+
+    int32_t data;
+    ESP_LOGI(TAG, "Taring...");
     tare_del = hx711_read_average(&dev, CONFIG_EXAMPLE_AVG_TIMES, &data);
     ESP_LOGI(TAG, "Tare is: %" PRIi32, tare_del);
     return;

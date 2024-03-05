@@ -12,7 +12,7 @@
 #include "quantity/portions.h"
 #include "main.h"
 
-#define MQTT_BROKER_ADDRESS "91.165.181.168"
+#define MQTT_BROKER_ADDRESS "82.64.64.47"
 #define MQTT_BROKER_PORT "55555"
 #define MQTT_TESTER_ADRESS "test.mosquitto.org"
 #define MQTT_TESTER_PORT "1883"
@@ -43,6 +43,9 @@ void mqtt_process_received_data(const char *topic, int topic_len, const char *da
     }
     if (strncmp(topic, "timer/Quantities", topic_len) == 0) { // Update quantities for scheduled distrib
         update_portions_from_json(data);
+    }
+    if (strncmp(topic, "quantity/taring", topic_len) == 0) { // Tare balance
+        tare();
     }
 }
 
@@ -77,6 +80,7 @@ static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t ev
             mqtt_subscribe("tasks/img_capture", 1);
             mqtt_subscribe("timer/Settings", 1);
             mqtt_subscribe("timer/Quantities", 1);
+            mqtt_subscribe("quantity/taring", 1);
             xSemaphoreGive(mqttConnectedSemaphore);
             break;
         case MQTT_EVENT_DISCONNECTED:
@@ -147,7 +151,7 @@ void mqtt_app_start(void)
             .message_retransmit_timeout = 5, // Timeout for retransmitting of a failed packet
         },
         .network = {
-            .reconnect_timeout_ms = 10000, // Reconnect to the broker after this value in milliseconds
+            .reconnect_timeout_ms = 2000, // Reconnect to the broker after this value in milliseconds
             .timeout_ms = 10000, // Abort network operation if not completed after this value in milliseconds
             .refresh_connection_after_ms = 65000, // Refresh connection after this value in milliseconds
             .disable_auto_reconnect = false, // Client will reconnect to the server (when errors/disconnect)

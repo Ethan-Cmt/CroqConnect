@@ -61,7 +61,21 @@ void initialize_sntp() {
     ESP_LOGI(TAG, "SNTP client init...");
     esp_sntp_setoperatingmode(SNTP_OPMODE_POLL);
     esp_sntp_setservername(0, "pool.ntp.org");
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
     esp_sntp_init();
+    const int max_sync_attempts = 300;
+    for (int i = 0; i < max_sync_attempts; i++) {
+        if (esp_sntp_get_sync_status() == SNTP_SYNC_STATUS_COMPLETED) {
+            ESP_LOGI(TAG, "SNTP sync completed successfully");
+            return; // Sortie de la fonction une fois la synchronisation terminée
+        }
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+    }
+
+    // Si la synchronisation a échoué après plusieurs tentatives
+    ESP_LOGE(TAG, "SNTP sync failed after multiple attempts");
+    ESP_LOGI(TAG, "Restarting ESP32...");
+    esp_restart();
 }
 
 void wait_for_time() {
@@ -72,7 +86,8 @@ void wait_for_time() {
     while (timeinfo.tm_year < (2024 - 1900)) {
         time(&now);
         localtime_r(&now, &timeinfo);
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        ESP_LOGI(TAG, "tm year : %d", timeinfo.tm_year);
+        vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 
     ESP_LOGI(TAG, "Time synchronized successfully");

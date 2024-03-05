@@ -51,13 +51,13 @@ void app_main()
 
     motor_init();
     init_camera();
-    tare();
+    init_tare();
 
     ESP_ERROR_CHECK(nvs_flash_init());
     wifi_init_sta(); // Try to connect to wifi w/ saved credentials
 
     // Waiting to get IP adress until 60 secs
-    for (int i = 0; i < 600; i++)
+    for (int i = 0; i < 900; i++)
     {
         vTaskDelay(pdMS_TO_TICKS(100));
         if (ip_obtained)
