@@ -12,6 +12,7 @@
 #include "time/time.h"
 #include "camera/cam.h"
 #include "distrib/motor.h"
+#include "distrib/fountain.h"
 #include "quantity/hx711.h"
 #include "quantity/portions.h"
 
@@ -51,6 +52,7 @@ void app_main()
 
     motor_init();
     init_camera();
+    init_fountain();
     init_tare();
 
     ESP_ERROR_CHECK(nvs_flash_init());
