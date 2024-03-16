@@ -36,13 +36,13 @@ void app_main()
 
     mqttConnectedSemaphore = xSemaphoreCreateBinary();
     if (mqttConnectedSemaphore == NULL) {
-        ESP_LOGE(TAG, "Impossible de créer le sémaphore de connexion MQTT");
+        ESP_LOGE(TAG, "Couldn't create MQTT connect semaphore");
         vTaskDelay(portMAX_DELAY);
     }
 
     imageUploadSemaphore = xSemaphoreCreateBinary();
     if (imageUploadSemaphore == NULL) {
-        ESP_LOGE(TAG, "Impossible de créer le sémaphore pour l'envoi d'image");
+        ESP_LOGE(TAG, "Couldn't create img upload semaphore");
         vTaskDelay(portMAX_DELAY);
     }
     else {
@@ -72,7 +72,7 @@ void app_main()
             periodic_time_check(); // May be replaced by C Timer(s) OR Task on core 1 w/ high priority
             while (1) { // MQTT sender loop
                 if (mqtt_connected) {
-                    xTaskCreatePinnedToCore(send_mqtt_frame_callback, "img_sndr", 4096, NULL, 5, NULL, 1); // Test for others periodic tasks
+                    xTaskCreatePinnedToCore(send_mqtt_frame_callback, "img_sndr", 4096, NULL, 5, NULL, 1); // Test this for others periodic tasks
                     periodic_schedule_send();
                     periodic_portions_send();
                     periodic_quantity_send();

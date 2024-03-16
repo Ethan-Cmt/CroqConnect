@@ -48,12 +48,15 @@ void mqtt_process_received_data(const char *topic, int topic_len, const char *da
     if (strncmp(topic, "quantity/taring", topic_len) == 0) { // Tare balance
         tare();
     }
-    if (strncmp(topic, "fountain", topic_len) == 0) { // Enable/Disable water fountain
+    if (strncmp(topic, "fountain/set", topic_len) == 0) { // Enable/Disable water fountain
         if (strncmp(data, "on", data_len) == 0) {
             turn_fountain_on();
         } else if (strncmp(data, "off", data_len) == 0) {
             turn_fountain_off();
         }
+    }
+    if (strncmp(topic, "fountain/toggle", topic_len) == 0) { // Toggle fountain power
+        toggle_fountain();
     }
 }
 
@@ -89,7 +92,8 @@ static esp_err_t mqtt_event_handler(void *event_handler_arg, esp_event_base_t ev
             mqtt_subscribe("timer/Settings", 1);
             mqtt_subscribe("timer/Quantities", 1);
             mqtt_subscribe("quantity/taring", 1);
-            mqtt_subscribe("fountain", 1);
+            mqtt_subscribe("fountain/set", 1);
+            mqtt_subscribe("fountain/toggle", 1);
             xSemaphoreGive(mqttConnectedSemaphore);
             break;
         case MQTT_EVENT_DISCONNECTED:

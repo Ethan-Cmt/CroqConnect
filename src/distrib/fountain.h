@@ -6,12 +6,11 @@
 #include <freertos/task.h>
 #include <driver/gpio.h>
 
-// Définir les broches GPIO pour le contrôle du relais
-#define RELAY_PIN GPIO_NUM_2  // Remplacez cela par le numéro de broche que vous utilisez
+#define RELAY_PIN GPIO_NUM_2
 
-// Prototypes de fonctions
 void init_fountain();
 void turn_fountain_on();
 void turn_fountain_off();
+void toggle_fountain();
 
 #endif // FOUNTAIN_H

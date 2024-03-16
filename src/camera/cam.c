@@ -68,7 +68,7 @@ static camera_config_t camera_config = {
     .frame_size = FRAMESIZE_QVGA,    // Do not use sizes above QVGA when not JPEG.
 
     .fb_location = CAMERA_FB_IN_DRAM,
-    .jpeg_quality = 15, // 0-63, for OV series camera sensors, lower number means higher quality
+    .jpeg_quality = 14, // 0-63, for OV series camera sensors, lower number means higher quality
     .fb_count = 1,      // When jpeg mode is used, if fb_count more than one, the driver will work in continuous mode.
     .grab_mode = CAMERA_GRAB_WHEN_EMPTY,
 };

@@ -75,5 +75,5 @@ void motor_set_angle(int angle)
 {
     ESP_ERROR_CHECK(mcpwm_comparator_set_compare_value(comparator, angle_to_compare(angle)));
     ESP_LOGI(TAG, "Angle set: %d", angle);
-    vTaskDelay(pdMS_TO_TICKS(1000));
+    vTaskDelay(pdMS_TO_TICKS(500));
 }

@@ -17,8 +17,8 @@ void distribute_croquettes(int quantity) {
     ESP_LOGI(TAG, "rotations : %d", rotations);
 
     for (int i = 0; i < rotations; ++i) {
-        motor_set_angle(179);
-        motor_set_angle(-179); // May change depending on the angle for 10g. Maybe encapsuled in task w/ big priority
+        motor_set_angle(178);
+        motor_set_angle(178); // May change depending on the angle for 10g. Maybe encapsuled in task w/ big priority
     }
 
     if (current_time_str != NULL) {
